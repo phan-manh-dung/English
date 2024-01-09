@@ -18,3 +18,9 @@
     color: red;
     text-align: center;
 }
+
+.border {
+    display: block;
+    border-bottom: 1px solid rgb(11, 135, 129);
+    margin-top: 4px;
+}

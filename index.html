@@ -19,15 +19,6 @@
 </head>
 
 <script>
-    // Lặp qua tất cả các phần tử có class 'vocab' và thêm sự kiện onclick
-        document.querySelectorAll('.vocab').forEach(item => {
-            item.addEventListener('click', function () {
-                let text = this.getAttribute('data-text');
-                speakText(text);
-            });
-        });
-
-        // Hàm speakText giống như trước
         function speakText(text) {
             const speech = new SpeechSynthesisUtterance();
             speech.lang = 'en-US';
@@ -47,64 +38,64 @@
             <div class="col">
                 <div id="vocabulady">Từ vựng</div>
                 <div>
-                    <span class="vocab" data-text="uncle">- <strong>uncle</strong>: chú,bác,cậu</span> <br>
-                    <span class="vocab" data-text="aunt">- <strong>aunt</strong>: dì,cô,mợ</span> <br>
-                    <span class="vocab" data-text="son">- <strong>son</strong>: con trai</span> <br>
-                    <span class="vocab" data-text="daughter">- <strong>daughter</strong>: con gái</span> <br>
-                    <span class="vocab" data-text="sibling">- <strong>sibling</strong>: anh chị em ruột</span> <br>
+                    <span  onclick="speakText('uncle')">- <strong>uncle</strong>: chú,bác,cậu</span> <br>
+                    <span  onclick="speakText('aunt')">- <strong>aunt</strong>: dì,cô,mợ</span> <br>
+                    <span  onclick="speakText('son')">- <strong>son</strong>: con trai</span> <br>
+                    <span  onclick="speakText('daughter')">- <strong>daughter</strong>: con gái</span> <br>
+                    <span  onclick="speakText('sibling')">- <strong>sibling</strong>: anh chị em ruột</span> <br>
                     <span class="border"></span>
-                    <span class="vocab" data-text="nephew">- <strong>nephew / grandson</strong>: cháu trai</span> <br>
-                    <span class="vocab" data-text="niece">- <strong>niece / granddaughter</strong>: cháu gái</span> <br>
-                    <span class="vocab" data-text="">- <strong>grandchild</strong>: cháu </span> <br>
-                    <span class="vocab" data-text="">- <strong>cousin</strong>: anh chị em họ</span> <br>
-                    <span class="vocab" data-text="">- <strong>relative</strong>: họ hàng</span> <br>
-                    <span class="vocab" data-text="">- <strong>only child</strong>: con một</span> <br>
-                    <span class="vocab" data-text="">- <strong>twin</strong>: anh em sinh đôi</span> <br>
+                    <span  onclick="speakText('nephew . grandson')">- <strong>nephew / grandson</strong>: cháu trai</span> <br>
+                    <span  onclick="speakText('niece . granddaughter')">- <strong>niece / granddaughter</strong>: cháu gái</span> <br>
+                    <span  onclick="speakText('grand child')">- <strong>grandchild</strong>: cháu </span> <br>
+                    <span  onclick="speakText('cousin')">- <strong>cousin</strong>: anh chị em họ</span> <br>
+                    <span  onclick="speakText('relative')">- <strong>relative</strong>: họ hàng</span> <br>
+                    <span  onclick="speakText('only child')">- <strong>only child</strong>: con một</span> <br>
+                    <span  onclick="speakText('twin')">- <strong>twin</strong>: anh em sinh đôi</span> <br>
  		            <span class="border"></span>
-                    <span class="vocab" data-text="">- <strong>mother-in-law / father-in-law</strong>: mẹ vợ / bố vợ</span> <br>
-                    <span class="vocab" data-text="">- <strong>son-in-law / daughter-in-low </strong>: con rể / con dâuu</span> <br>
-                    <span class="vocab" data-text="">- <strong>sister-in-low / brother-in-low</strong>: chị / em dâuu /  anh em rể</span> <br>
-                    <span class="vocab" data-text="">- <strong>wife</strong>: vợ</span> <br>
-                    <span class="vocab" data-text="">- <strong>admire</strong>: ngưỡng mộ</span> <br>
+                    <span  onclick="speakText('mother-in-low')">- <strong>mother-in-law / father-in-law</strong>: mẹ vợ / bố vợ</span> <br>
+                    <span  onclick="speakText('son-in-low')">- <strong>son-in-law / daughter-in-low </strong>: con rể / con dâuu</span> <br>
+                    <span  >- <strong>sister-in-low / brother-in-low</strong>: chị / em dâuu /  anh em rể</span> <br>
+                    <span  onclick="speakText('wife')">- <strong>wife</strong>: vợ</span> <br>
+                    <span  onclick="speakText('admire')">- <strong>admire</strong>: ngưỡng mộ</span> <br>
 
                 </div>
             </div>
             <div class="col">
                 <div class="talk">Câu nói</div>
                 <div>
-                    <span class="vocab" data-text="">- <strong>I am happy to make your acquaintance </strong><p>(Tôi rất vui khi được làm quen với bạn)</p></span>
-                    <span class="vocab" data-text="">- <strong>This is Dung . Can I speak to Hiep , please </strong><p>(Tôi là dũng . Làm ơn cho tôi gặp H)</p></span>
-                    <span class="vocab" data-text="">- <strong>Long time no see </strong><p>(Lâu rồi không gặp)</p></span>
-                    <span class="vocab" data-text="" class="border"></span>
-                    <span class="vocab" data-text="">- <strong>How are you going </strong>
+                    <span  onclick="speakText('I am happy to make your acquaintance')">- <strong>I am happy to make your acquaintance </strong><p>(Tôi rất vui khi được làm quen với bạn)</p></span>
+                    <span  onclick="speakText('This is Dung . Can i speak to Hiep , please')">- <strong>This is Dung . Can I speak to Hiep , please </strong><p>(Tôi là dũng . Làm ơn cho tôi gặp H)</p></span>
+                    <span  onclick="speakText('long time no see')">- <strong>Long time no see </strong><p>(Lâu rồi không gặp)</p></span>
+                    <span   class="border"></span>
+                    <span  onclick="speakText('how are you going')">- <strong>How are you going </strong>
                         <p>(Dạo này mày sao rồi?)</p>
                     </span>
-                    <span class="vocab" data-text="">- <strong>Who is you </strong>
+                    <span  onclick="speakText('who is you')">- <strong>Who is you </strong>
                         <p>(Bạn là ai)</p>
                     </span>
-                    <span class="vocab" data-text="">- <strong>Do you know how to speak Vietnamese? </strong>
+                    <span  onclick="speakText('do you know how to speak vietnamese')">- <strong>Do you know how to speak Vietnamese? </strong>
                         <p>(Bạn có biết nói tiếng việt không)</p>
                     </span>
-                    <span class="vocab" data-text="">- <strong>What do you wish? </strong>
+                    <span  onclick="speakText('what do you wish')">- <strong>What do you wish? </strong>
                         <p>(Bạn mong ước điều gì)</p>
                     </span>
-                    <span class="vocab" data-text="">- <strong>Can I help you? </strong>
+                    <span  onclick="speakText('can i help you')">- <strong>Can I help you? </strong>
                         <p>(Tôi có thể giúp gì cho bạn?)</p>
                     </span>
-                    <span class="vocab" data-text="" class="border"></span>
-                    <span class="vocab" data-text="">- <strong>What is this called in English? </strong>
+                    <span   class="border"></span>
+                    <span  onclick="speakText('what is this called in English')">- <strong>What is this called in English? </strong>
                         <p>(Cái này trong tiếng anh gọi là gì?)</p>
                     </span>
-                    <span class="vocab" data-text="">- <strong>What does this word mean? </strong>
+                    <span  onclick="speakText('what does this word mean')">- <strong>What does this word mean? </strong>
                         <p>(Từ này có nghĩa là gì?)</p>
                     </span>
-                    <span class="vocab" data-text="">- <strong>Please come in </strong>
+                    <span  onclick="speakText('please come in')">- <strong>Please come in </strong>
                         <p>(Xin mời vào)</p>
                     </span>
-                    <span class="vocab" data-text="">- <strong>Wait for me </strong>
+                    <span  onclick="speakText('wait for me')">- <strong>Wait for me </strong>
                         <p>(Chờ tôi nhé )</p>
                     </span>
-                    <span class="vocab" data-text="">- <strong>Wait a minute </strong>
+                    <span  onclick="speakText('wait a minute')">- <strong>Wait a minute </strong>
                         <p>(Đợi tý )</p>
                     </span>
 

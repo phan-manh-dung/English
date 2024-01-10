@@ -18,6 +18,14 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
+<script>
+    function speakText(text) {
+        const speech = new SpeechSynthesisUtterance();
+        speech.lang = 'en-US'; // Set language to English
+        speech.text = text;
+        window.speechSynthesis.speak(speech);
+    }
+</script>
 
 <body>
     <div class="container">
@@ -28,7 +36,7 @@
             <div class="col">
                 <div class="vocabulady">Từ vựng</div>
                 <div>
-                    <span>- <strong>uncle</strong>: chú,bác,cậu</span> <br>
+                    <span onclick="speakText('uncle')">- <strong>uncle</strong>: chú,bác,cậu</span> <br>
                     <span>- <strong>aunt</strong>: dì,cô,mợ</span> <br>
                     <span>- <strong>son</strong>: con trai</span> <br>
                     <span>- <strong>daughter</strong>: con gái</span> <br>
@@ -41,12 +49,12 @@
                     <span>- <strong>relative</strong>: họ hàng</span> <br>
                     <span>- <strong>only child</strong>: con một</span> <br>
                     <span>- <strong>twin</strong>: anh em sinh đôi</span> <br>
- 		    <span class="border"></span>
-<span>- <strong>mother-in-law / father-in-law</strong>: mẹ vợ / bố vợ</span> <br>
-  <span>- <strong>son-in-law / daughter-in-low </strong>: con rể / con dâuu</span> <br>
-<span>- <strong>sister-in-low / brother-in-low</strong>: chị / em dâuu /  anh em rể</span> <br>
-<span>- <strong>wife</strong>: vợ</span> <br>
-<span>- <strong>admire</strong>: ngưỡng mộ</span> <br>
+ 		            <span class="border"></span>
+                    <span>- <strong>mother-in-law / father-in-law</strong>: mẹ vợ / bố vợ</span> <br>
+                    <span>- <strong>son-in-law / daughter-in-low </strong>: con rể / con dâuu</span> <br>
+                    <span>- <strong>sister-in-low / brother-in-low</strong>: chị / em dâuu /  anh em rể</span> <br>
+                    <span>- <strong>wife</strong>: vợ</span> <br>
+                    <span>- <strong>admire</strong>: ngưỡng mộ</span> <br>
 
                 </div>
             </div>
@@ -72,20 +80,20 @@
                     <span>- <strong>Can I help you? </strong>
                         <p>(Tôi có thể giúp gì cho bạn?)</p>
                     </span>
-<span class="border"></span>
- <span>- <strong>What is this called in English? </strong>
+                    <span class="border"></span>
+                    <span>- <strong>What is this called in English? </strong>
                         <p>(Cái này trong tiếng anh gọi là gì?)</p>
                     </span>
- <span>- <strong>What does this word mean? </strong>
+                    <span>- <strong>What does this word mean? </strong>
                         <p>(Từ này có nghĩa là gì?)</p>
                     </span>
- <span>- <strong>Please come in </strong>
+                    <span>- <strong>Please come in </strong>
                         <p>(Xin mời vào)</p>
                     </span>
- <span>- <strong>Wait for me </strong>
+                    <span>- <strong>Wait for me </strong>
                         <p>(Chờ tôi nhé )</p>
                     </span>
- <span>- <strong>Wait a minute </strong>
+                    <span>- <strong>Wait a minute </strong>
                         <p>(Đợi tý )</p>
                     </span>
 

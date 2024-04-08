@@ -26,6 +26,14 @@
             window.speechSynthesis.speak(speech);
         }
 
+         function readAll() {
+                const spans = document.querySelectorAll('span[onclick^="speakText"]');
+                spans.forEach(span => {
+                    const text = span.getAttribute('onclick').match(/'(.*?)'/)[1];
+                    speakText(text);
+                });
+            }
+
 </script>
 
 <body>
@@ -33,7 +41,7 @@
         <div class="header">
             <div class="title">English</div>
             <div class="title">
-                <button onclick="speakText()">Đọc all</button>
+                <button onclick="readAll()">Đọc all</button>
             </div>
         </div>
         <div class="row ">
@@ -461,6 +469,20 @@
                     <span onclick="speakText('gathered')"><strong>- gathered</strong>:tập hợp lại</span> <br>
                     <span onclick="speakText('bending')"><strong>- bending</strong>:uốn cong</span> <br>
                     <span onclick="speakText('hanging')"><strong>- hanging</strong>:treo</span> <br>
+                    <span onclick="speakText('carpet')"><strong>- carpet</strong>:thảm</span> <br>
+                    <span onclick="speakText('hanger')"><strong>- hanger</strong>:móc áo</span> <br>
+                    <span onclick="speakText('against')"><strong>- against</strong>:chống lại</span> <br>
+                    <span onclick="speakText('a doorway')"><strong>- a doorway</strong>:1 ô cửa</span> <br>
+                    <span onclick="speakText('wearing glasses')"><strong>- wearing glasses</strong>:đeo kính</span> <br>
+                    <span onclick="speakText('merchandise')"><strong>- merchandise</strong>:hàng hóa</span> <br>
+                    <span onclick="speakText('piling up')"><strong>- piling up</strong>:chất đống</span> <br>
+                    <span onclick="speakText('toolbox')"><strong>- toolbox</strong>:hộp công cụ</span> <br>
+                    <span onclick="speakText('stacked')"><strong>- stacked</strong>:xếp chồng lên nhau</span> <br>
+                    <span onclick="speakText('fixtures')"><strong>- fixtures</strong>:đồ đạc</span> <br>
+                    <span onclick="speakText('mounted')"><strong>- mounted</strong>:gắn</span> <br>
+                    <span onclick="speakText('on the wall')"><strong>- on the wall</strong>:trên tường</span> <br>
+                    <span onclick="speakText('tablecloths')"><strong>- tablecloths</strong>:khăn trải bàn</span> <br>
+                    <span onclick="speakText('scissors')"><strong>- scissors</strong>:cái kéo</span> <br>
                   
                     <span class="border"></span>
                     <span class="border"></span>

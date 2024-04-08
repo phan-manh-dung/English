@@ -19,6 +19,9 @@
 </head>
 
 <script>
+     let currentIndex = 0;
+        let isReading = false;
+        let utterances = [];
         function speakText(text) {
             const speech = new SpeechSynthesisUtterance();
             speech.lang = 'en-US';
@@ -26,13 +29,37 @@
             window.speechSynthesis.speak(speech);
         }
 
-         function readAll() {
+         <!-- function readAll() {
                 const spans = document.querySelectorAll('span[onclick^="speakText"]');
                 spans.forEach(span => {
                     const text = span.getAttribute('onclick').match(/'(.*?)'/)[1];
                     speakText(text);
                 });
-            }
+            } -->
+
+             function readAll() {
+                    if (isReading) {
+                        window.speechSynthesis.cancel();
+                        isReading = false;
+                        return;
+                    }
+
+                    isReading = true;
+                    for (let i = currentIndex; i < utterances.length; i++) {
+                        window.speechSynthesis.speak(utterances[i]);
+                    }
+
+                    currentIndex = utterances.length;
+                }
+
+                function continueReading() {
+                    isReading = true;
+                    for (let i = currentIndex; i < utterances.length; i++) {
+                        window.speechSynthesis.speak(utterances[i]);
+                    }
+
+                    currentIndex = utterances.length;
+                }
 
 </script>
 
@@ -42,6 +69,8 @@
             <div class="title">English</div>
             <div class="title">
                 <button onclick="readAll()">Đọc all</button>
+            <button onclick="readAll()">Dừng</button>
+            <button onclick="continueReading()">Đọc tiếp</button>
             </div>
         </div>
         <div class="row ">

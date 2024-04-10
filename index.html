@@ -26,20 +26,32 @@
             const speech = new SpeechSynthesisUtterance();
             speech.lang = 'en-US';
             speech.text = text;
+            
+            speech.onstart = function () {
+                myElement[currentIndex].style.backgroundColor  = '#FFA500';
+            };
+            speech.onend = function () {
+                myElement[currentIndex].style.backgroundColor  = '#E6E6FA';
+                currentIndex++; // Cập nhật currentIndex cho lần đọc tiếp theo
+            };
             window.speechSynthesis.speak(speech);
         }
+
+
+        const myElement = document.getElementsByClassName('strong');
 
          function readAll() {
                 const spans = document.querySelectorAll('span[onclick^="speakText"]');
                 spans.forEach(span => {
                     const text = span.getAttribute('onclick').match(/'(.*?)'/)[1];
-                    speakText(text);
+                    speakText(text);              
                 });
             } 
-
-         
-
+     
+        
 </script>
+
+
 
 <body>
     <div class="container">
@@ -54,580 +66,582 @@
             <div class="col">
                 <div id="vocabulady">Từ vựng</div>
                 <div>
-                    <span  onclick="speakText('uncle')">- <strong>uncle</strong>: chú,bác,cậu</span> <br>
-                    <span  onclick="speakText('aunt')">- <strong>aunt</strong>: dì,cô,mợ</span> <br>
-                    <span  onclick="speakText('son')">- <strong>son</strong>: con trai</span> <br>
-                    <span  onclick="speakText('daughter')">- <strong>daughter</strong>: con gái</span> <br>
-                    <span  onclick="speakText('sibling')">- <strong>sibling</strong>: anh chị em ruột</span> <br>
+                    <span  onclick="speakText('uncle')">- <strong class="strong">uncle</strong>: chú,bác,cậu</span> <br>
+                    <span  onclick="speakText('aunt')">- <strong class="strong">aunt</strong>: dì,cô,mợ</span> <br>
+                    <span  onclick="speakText('son')">- <strong class="strong">son</strong>: con trai</span> <br>
+                    <span  onclick="speakText('daughter')">- <strong class="strong">daughter</strong>: con gái</span> <br>
+                    <span  onclick="speakText('sibling')">- <strong class="strong">sibling</strong>: anh chị em ruột</span> <br>
                     <span class="border"></span>
-                    <span  onclick="speakText('nephew . grandson')">- <strong>nephew / grandson</strong>: cháu trai</span> <br>
-                    <span  onclick="speakText('niece . granddaughter')">- <strong>niece / granddaughter</strong>: cháu gái</span> <br>
-                    <span  onclick="speakText('grand child')">- <strong>grandchild</strong>: cháu </span> <br>
-                    <span  onclick="speakText('cousin')">- <strong>cousin</strong>: anh chị em họ</span> <br>
-                    <span  onclick="speakText('relative')">- <strong>relative</strong>: họ hàng</span> <br>
-                    <span  onclick="speakText('only child')">- <strong>only child</strong>: con một</span> <br>
-                    <span  onclick="speakText('twin')">- <strong>twin</strong>: anh em sinh đôi</span> <br>
+                    <span  onclick="speakText('nephew    grandson')">- <strong class="strong">nephew / grandson</strong>: cháu trai</span> <br>
+                    <span  onclick="speakText('niece     granddaughter')">- <strong class="strong">niece / granddaughter</strong>: cháu gái</span> <br>
+                    <span  onclick="speakText('grand child')">- <strong class="strong">grandchild</strong>: cháu </span> <br>
+                    <span  onclick="speakText('cousin')">- <strong class="strong">cousin</strong>: anh chị em họ</span> <br>
+                    <span  onclick="speakText('relative')">- <strong class="strong">relative</strong>: họ hàng</span> <br>
+                    <span  onclick="speakText('only child')">- <strong class="strong">only child</strong>: con một</span> <br>
+                    <span  onclick="speakText('twin')">- <strong class="strong">twin</strong>: anh em sinh đôi</span> <br>
  		            <span class="border"></span>
-                    <span  onclick="speakText('mother-in-low')">- <strong>mother-in-law / father-in-law</strong>: mẹ vợ / bố vợ</span> <br>
-                    <span  onclick="speakText('son-in-low')">- <strong>son-in-law / daughter-in-low </strong>: con rể / con dâuu</span> <br>
-                    <span  >- <strong>sister-in-low / brother-in-low</strong>: chị / em dâuu /  anh em rể</span> <br>
-                    <span  onclick="speakText('wife')">- <strong>wife</strong>: vợ</span> <br>
-                    <span  onclick="speakText('admire')">- <strong>admire</strong>: ngưỡng mộ</span> <br>
+                    <span  onclick="speakText('mother-in-low    father-in-law')">- <strong class="strong">mother-in-law / father-in-law</strong>: mẹ vợ / bố vợ</span> <br>
+                    <span  onclick="speakText('son-in-low   daughter-in-low')">- <strong class="strong">son-in-law / daughter-in-low </strong>: con rể / con dâuu</span> <br>
+                    <span onclick="speakText('sister-in-law    brother-in-law')">- <strong class="strong">sister-in-law / brother-in-law</strong>: chị / em dâu / anh em rể</span> <br>
+                    <span onclick="speakText('wife')">- <strong class="strong">wife</strong>: vợ</span> <br>
+
+                    <span  onclick="speakText('admire')">- <strong class="strong">admire</strong>: ngưỡng mộ</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Atmosphere')">- <strong>atmosphere</strong>: bầu khí quyển</span> <br>
-                    <span onclick="speakText('contamination')">- <strong>contamination</strong>: làm nhiễm độc</span> <br>
-                    <span onclick="speakText('creature')">- <strong>creature</strong>: sinh vật</span> <br>
-                    <span onclick="speakText('climate change')">- <strong>climate change</strong>: biến đổi khí hậu</span> <br>
-                    <span onclick="speakText('destruction')">- <strong>destruction</strong>: sự phá hủy</span> <br>
+                    <span onclick="speakText('Atmosphere')">- <strong class="strong">atmosphere</strong>: bầu khí quyển</span> <br>
+                    <span onclick="speakText('contamination')">- <strong class="strong">contamination</strong>: làm nhiễm độc</span> <br>
+                    <span onclick="speakText('creature')">- <strong class="strong">creature</strong>: sinh vật</span> <br>
+                    <span onclick="speakText('climate change')">- <strong class="strong">climate change</strong>: biến đổi khí hậu</span> <br>
+                    <span onclick="speakText('destruction')">- <strong class="strong">destruction</strong>: sự phá hủy</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('deforestation')">- <strong>deforestation</strong>: sự phá rừng</span> <br>
-                    <span onclick="speakText('dust')">- <strong>dust</strong>: bụi bẩn</span> <br>
-                    <span onclick="speakText('earthquake')">- <strong>earthquake</strong>: động đất</span> <br>
-                    <span onclick="speakText('ecosystem')">- <strong>ecosystem</strong>: hệ sinh thái</span> <br>
-                    <span onclick="speakText('environmentalist ')">- <strong>environmentalist </strong>: nhà môi trường học</span> <br>
+                    <span onclick="speakText('deforestation')">- <strong class="strong">deforestation</strong>: sự phá rừng</span> <br>
+                    <span onclick="speakText('dust')">- <strong class="strong">dust</strong>: bụi bẩn</span> <br>
+                    <span onclick="speakText('earthquake')">- <strong class="strong">earthquake</strong>: động đất</span> <br>
+                    <span onclick="speakText('ecosystem')">- <strong class="strong">ecosystem</strong>: hệ sinh thái</span> <br>
+                    <span onclick="speakText('environmentalist ')">- <strong class="strong">environmentalist </strong>: nhà môi trường học</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('erosion')">- <strong>erosion</strong>: sự xói mòn</span> <br>
-                    <span onclick="speakText('Industrial waste ')">- <strong>Industrial waste </strong>: chất thải công nghiệp</span> <br>
-                    <span onclick="speakText('natural resources ')">- <strong>natural resources </strong>: tài nguyên thiên nhiên</span> <br>
-                    <span onclick="speakText('pollution ')">- <strong>pollution </strong>: sự ô nhiễm</span> <br>
-                    <span onclick="speakText('protection ')">- <strong>protection </strong>: sự bảo tồn</span> <br>
+                    <span onclick="speakText('erosion')">- <strong class="strong">erosion</strong>: sự xói mòn</span> <br>
+                    <span onclick="speakText('Industrial waste ')">- <strong class="strong">Industrial waste </strong>: chất thải công nghiệp</span> <br>
+                    <span onclick="speakText('natural resources ')">- <strong class="strong">natural resources </strong>: tài nguyên thiên nhiên</span> <br>
+                    <span onclick="speakText('pollution ')">- <strong class="strong">pollution </strong>: sự ô nhiễm</span> <br>
+                    <span onclick="speakText('protection ')">- <strong class="strong">protection </strong>: sự bảo tồn</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('rain forest')">- <strong>rain forest</strong>: rừng nhiệt đới</span> <br>
-                    <span onclick="speakText('sea level')">- <strong>sea level</strong>: mực nước biển</span> <br>
-                    <span onclick="speakText('sewage ')">- <strong>sewage </strong>: nước thải</span> <br>
-                    <span onclick="speakText('conserve ')">- <strong>conserve </strong>: bảo tồn</span> <br>
-                    <span onclick="speakText('degrade the environment ')">- <strong>degrade the environment </strong>: làm suy thoái môi trường</span> <br>
+                    <span onclick="speakText('rain forest')">- <strong class="strong">rain forest</strong>: rừng nhiệt đới</span> <br>
+                    <span onclick="speakText('sea level')">- <strong class="strong">sea level</strong>: mực nước biển</span> <br>
+                    <span onclick="speakText('sewage ')">- <strong class="strong">sewage </strong>: nước thải</span> <br>
+                    <span onclick="speakText('conserve ')">- <strong class="strong">conserve </strong>: bảo tồn</span> <br>
+                    <span onclick="speakText('degrade the environment ')">- <strong class="strong">degrade the environment </strong>: làm suy thoái môi trường</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('die out ')">- <strong>die out </strong>: chết dần</span> <br>
-                    <span onclick="speakText('dry up ')">- <strong>dry up </strong>: khô cạn</span> <br>
-                    <span onclick="speakText('emit ')">- <strong>emit </strong>: bốc ra</span> <br>
-                    <span onclick="speakText('Log forests ')">- <strong>Log forests </strong>: chặt phá rừng</span> <br>
-                    <span onclick="speakText('make use of  ')">- <strong>make use of  </strong>: tận dụng cái gì</span> <br>
+                    <span onclick="speakText('die out ')">- <strong class="strong">die out </strong>: chết dần</span> <br>
+                    <span onclick="speakText('dry up ')">- <strong class="strong">dry up </strong>: khô cạn</span> <br>
+                    <span onclick="speakText('emit ')">- <strong class="strong">emit </strong>: bốc ra</span> <br>
+                    <span onclick="speakText('Log forests ')">- <strong class="strong">Log forests </strong>: chặt phá rừng</span> <br>
+                    <span onclick="speakText('make use of  ')">- <strong class="strong">make use of  </strong>: tận dụng cái gì</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('reduce pollution ')">- <strong>reduce pollution </strong>: giảm ô nhiễm</span> <br>
-                    <span onclick="speakText('Harmful ')">- <strong>Harmful </strong>: có hại</span> <br>
-                    <span onclick="speakText('Organic ')">- <strong>Organic </strong>: hữu cơ</span> <br>
-                    <span onclick="speakText('Man-made ')">- <strong>Man-made </strong>: nhân tạo</span> <br>
-                    <span onclick="speakText('Environment friendly ')">- <strong>Environment friendly </strong>: thân thiện với môi trường</span> <br>
+                    <span onclick="speakText('reduce pollution ')">- <strong class="strong">reduce pollution </strong>: giảm ô nhiễm</span> <br>
+                    <span onclick="speakText('Harmful ')">- <strong class="strong">Harmful </strong>: có hại</span> <br>
+                    <span onclick="speakText('Organic ')">- <strong class="strong">Organic </strong>: hữu cơ</span> <br>
+                    <span onclick="speakText('Man-made ')">- <strong class="strong">Man-made </strong>: nhân tạo</span> <br>
+                    <span onclick="speakText('Environment friendly ')">- <strong class="strong">Environment friendly </strong>: thân thiện với môi trường</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('light pollution ')">- <strong>light pollution </strong>: ô nhiễm ánh sáng</span> <br>
-                    <span onclick="speakText('air pollution ')">- <strong>air pollution </strong>: ô nhiễm không khí</span> <br>
-                    <span onclick="speakText('soil pollution ')">- <strong>soil pollution </strong>: ô nhiễm đất</span> <br>
-                    <span onclick="speakText('noise pollution ')">- <strong>noise pollution </strong>: ô nhiễm tiếng ồn</span> <br>
-                    <span onclick="speakText('water pollution ')">- <strong>water pollution </strong>: ô nhiễm nước</span> <br>
+                    <span onclick="speakText('light pollution ')">- <strong class="strong">light pollution </strong>: ô nhiễm ánh sáng</span> <br>
+                    <span onclick="speakText('air pollution ')">- <strong class="strong">air pollution </strong>: ô nhiễm không khí</span> <br>
+                    <span onclick="speakText('soil pollution ')">- <strong class="strong">soil pollution </strong>: ô nhiễm đất</span> <br>
+                    <span onclick="speakText('noise pollution ')">- <strong class="strong">noise pollution </strong>: ô nhiễm tiếng ồn</span> <br>
+                    <span onclick="speakText('water pollution ')">- <strong class="strong">water pollution </strong>: ô nhiễm nước</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('lecturer')">- <strong>lecturer </strong> :giảng viên đại học</span> <br>
-                    <span onclick="speakText('teaching assistant')">- <strong>: teaching assistant </strong>trợ giảng</span> <br>
-                    <span onclick="speakText('accountant')">- <strong>accountant </strong>: kế toán</span> <br>
-                    <span onclick="speakText('Advertising executive')">- <strong>: Advertising executive </strong>chuyên viên quảng cáo</span> <br>
-                    <span onclick="speakText('Clerk')">- <strong>Clerk </strong>: nhân viên văn phòng</span> <br>
+                    <span onclick="speakText('lecturer')">- <strong class="strong">lecturer </strong> :giảng viên đại học</span> <br>
+                    <span onclick="speakText('teaching assistant')">- <strong class="strong">: teaching assistant </strong>trợ giảng</span> <br>
+                    <span onclick="speakText('accountant')">- <strong class="strong">accountant </strong>: kế toán</span> <br>
+                    <span onclick="speakText('Advertising executive')">- <strong class="strong">: Advertising executive </strong>chuyên viên quảng cáo</span> <br>
+                    <span onclick="speakText('Clerk')">- <strong class="strong">Clerk </strong>: nhân viên văn phòng</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('director')">- <strong>director </strong>: giám đốc</span> <br>
-                    <span onclick="speakText('receptionist')">- <strong>receptionist </strong>: lễ tân</span> <br>
-                    <span onclick="speakText('secretary')">- <strong>secretary </strong>: thư kí</span> <br>
-                    <span onclick="speakText('dentist')">- <strong>dentist </strong>: nha sĩ</span> <br>
+                    <span onclick="speakText('director')">- <strong class="strong">director </strong>: giám đốc</span> <br>
+                    <span onclick="speakText('receptionist')">- <strong class="strong">receptionist </strong>: lễ tân</span> <br>
+                    <span onclick="speakText('secretary')">- <strong class="strong">secretary </strong>: thư kí</span> <br>
+                    <span onclick="speakText('dentist')">- <strong class="strong">dentist </strong>: nha sĩ</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('pharmacist')">- <strong>pharmacist </strong>: dược sĩ</span> <br>
-                    <span onclick="speakText('midwife')">- <strong>midwife </strong>: hộ sinh</span> <br>
-                    <span onclick="speakText('nurse')">- <strong>nurse </strong>: y tá</span> <br>
-                    <span onclick="speakText('optician')">- <strong>optician </strong>: bác sĩ mắt</span> <br>
-                    <span onclick="speakText('paramedic')">- <strong>paramedic </strong>: nhân viên cấp cứu</span> <br>
+                    <span onclick="speakText('pharmacist')">- <strong class="strong">pharmacist </strong>: dược sĩ</span> <br>
+                    <span onclick="speakText('midwife')">- <strong class="strong">midwife </strong>: hộ sinh</span> <br>
+                    <span onclick="speakText('nurse')">- <strong class="strong">nurse </strong>: y tá</span> <br>
+                    <span onclick="speakText('optician')">- <strong class="strong">optician </strong>: bác sĩ mắt</span> <br>
+                    <span onclick="speakText('paramedic')">- <strong class="strong">paramedic </strong>: nhân viên cấp cứu</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('psychologist')">- <strong>psychologist </strong>: nhà tâm lý học</span> <br>
-                    <span onclick="speakText('surgeon')">- <strong>surgeon </strong>: bác sĩ phẫu thuật</span> <br>
-                    <span onclick="speakText('Vet')"><strong>- Vet </strong>: bác sĩ thú ý </span> <br>
-                    <span onclick="speakText('Actor . actress')"><strong>- Actor/ actress</strong> :nam nữ diễn viên  </span> <br>
-                    <span onclick="speakText('comedian')"><strong>- comedian </strong>:diễn viên hài </span> <br>
+                    <span onclick="speakText('psychologist')">- <strong class="strong">psychologist </strong>: nhà tâm lý học</span> <br>
+                    <span onclick="speakText('surgeon')">- <strong class="strong">surgeon </strong>: bác sĩ phẫu thuật</span> <br>
+                    <span onclick="speakText('Vet')"><strong class="strong">- Vet </strong>: bác sĩ thú ý </span> <br>
+                    <span onclick="speakText('Actor . actress')"><strong class="strong">- Actor/ actress</strong> :nam nữ diễn viên  </span> <br>
+                    <span onclick="speakText('comedian')"><strong class="strong">- comedian </strong>:diễn viên hài </span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('composer')"><strong>- composer </strong>: nhạc sĩ</span> <br>
-                    <span onclick="speakText('photographer')"><strong>- photographer </strong>: nhiếp ảnh gia</span> <br>
-                    <span onclick="speakText('Master of Ceremonies (MC)')"><strong>- Master of Ceremonies (MC) </strong>: MC </span> <br>
-                    <span onclick="speakText('singer')"><strong>- singer </strong>: ca sĩ </span> <br>
-                    <span onclick="speakText('sculptor')"><strong>- sculptor </strong>: nhà điêu khắc </span> <br>
-                    <span onclick="speakText('decade')"><strong>- decade </strong>: thập kỉ </span> <br>
-                    <span onclick="speakText('century ')"><strong>- century  </strong>: thế kỉ </span> <br>
-                    <span onclick="speakText('millennium ')"><strong>- millennium  </strong>: thiên niên kỉ </span> <br>
+                    <span onclick="speakText('composer')"><strong class="strong">- composer </strong>: nhạc sĩ</span> <br>
+                    <span onclick="speakText('photographer')"><strong class="strong">- photographer </strong>: nhiếp ảnh gia</span> <br>
+                    <span onclick="speakText('Master of Ceremonies (MC)')"><strong class="strong">- Master of Ceremonies (MC) </strong>: MC </span> <br>
+                    <span onclick="speakText('singer')"><strong class="strong">- singer </strong>: ca sĩ </span> <br>
+                    <span onclick="speakText('sculptor')"><strong class="strong">- sculptor </strong>: nhà điêu khắc </span> <br>
+                    <span onclick="speakText('decade')"><strong class="strong">- decade </strong>: thập kỉ </span> <br>
+                    <span onclick="speakText('century ')"><strong class="strong">- century  </strong>: thế kỉ </span> <br>
+                    <span onclick="speakText('millennium ')"><strong class="strong">- millennium  </strong>: thiên niên kỉ </span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('bartender')"><strong>- bartender </strong>: người pha rượu</span> <br>
-                    <span onclick="speakText('barista')"><strong>- barista </strong>: người pha chế cà phê</span> <br>
-                    <span onclick="speakText('chef. cook')"><strong>- chef / cook</strong>: bếp trưởng / đầu bếp</span> <br>
-                    <span onclick="speakText('tour guide')"><strong>- tour guide</strong>: hướng dẫn viên du lịch</span> <br>
-                    <span onclick="speakText('Waiter . Waitress ')"><strong>- Waiter / Waitress </strong>: bồi bàn nam / nữ</span> <br>
+                    <span onclick="speakText('bartender')"><strong class="strong">- bartender </strong>: người pha rượu</span> <br>
+                    <span onclick="speakText('barista')"><strong class="strong">- barista </strong>: người pha chế cà phê</span> <br>
+                    <span onclick="speakText('chef. cook')"><strong class="strong">- chef / cook</strong>: bếp trưởng / đầu bếp</span> <br>
+                    <span onclick="speakText('tour guide')"><strong class="strong">- tour guide</strong>: hướng dẫn viên du lịch</span> <br>
+                    <span onclick="speakText('Waiter    Waitress')"><strong class="strong">- Waiter / Waitress </strong>: bồi bàn nam / nữ</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('electrician')"><strong>- electrician </strong>: thợ điện</span> <br>
-                    <span onclick="speakText('mechanic')"><strong>- mechanic </strong>: thợ sửa máy</span> <br>
-                    <span onclick="speakText('architect')"><strong>- architect </strong>: kiến trúc sư </span> <br>
-                    <span onclick="speakText('carpenter')"><strong>- carpenter </strong>: thợ mộc </span> <br>
-                    <span onclick="speakText('Interior designer')"><strong>- Interior designer </strong>: nhà thiết kế nội thất </span> <br>
+                    <span onclick="speakText('electrician')"><strong class="strong">- electrician </strong>: thợ điện</span> <br>
+                    <span onclick="speakText('mechanic')"><strong class="strong">- mechanic </strong>: thợ sửa máy</span> <br>
+                    <span onclick="speakText('architect')"><strong class="strong">- architect </strong>: kiến trúc sư </span> <br>
+                    <span onclick="speakText('carpenter')"><strong class="strong">- carpenter </strong>: thợ mộc </span> <br>
+                    <span onclick="speakText('Interior designer')"><strong class="strong">- Interior designer </strong>: nhà thiết kế nội thất </span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('plumber')"><strong>- plumber </strong>: thợ sửa ống nước</span> <br>
-                    <span onclick="speakText('factory worker')"><strong>- factory worker </strong>: công nhân nhà máy</span> <br>
-                    <span onclick="speakText('Civil servant')"><strong>- Civil servant </strong>: công chức nhà nước</span> <br>
-                    <span onclick="speakText('diplomat')"><strong>- diplomat </strong>: nhà ngoại giao</span> <br>
-                    <span onclick="speakText('housewife')"><strong>- housewife </strong>: nội trợ</span> <br>
-                    <span onclick="speakText('interpreter')"><strong>- interpreter </strong>: thông dịch viên</span> <br>
+                    <span onclick="speakText('plumber')"><strong class="strong">- plumber </strong>: thợ sửa ống nước</span> <br>
+                    <span onclick="speakText('factory worker')"><strong class="strong">- factory worker </strong>: công nhân nhà máy</span> <br>
+                    <span onclick="speakText('Civil servant')"><strong class="strong">- Civil servant </strong>: công chức nhà nước</span> <br>
+                    <span onclick="speakText('diplomat')"><strong class="strong">- diplomat </strong>: nhà ngoại giao</span> <br>
+                    <span onclick="speakText('housewife')"><strong class="strong">- housewife </strong>: nội trợ</span> <br>
+                    <span onclick="speakText('interpreter')"><strong class="strong">- interpreter </strong>: thông dịch viên</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('landlord')"><strong>- landlord </strong>: chủ nhà</span> <br>
-                    <span onclick="speakText('reporter')"><strong>- reporter </strong>: phóng viên</span> <br>
-                    <span onclick="speakText('security guard')"><strong>- security guard </strong>: nhân viên bảo vệ</span> <br>
+                    <span onclick="speakText('landlord')"><strong class="strong">- landlord </strong>: chủ nhà</span> <br>
+                    <span onclick="speakText('reporter')"><strong class="strong">- reporter </strong>: phóng viên</span> <br>
+                    <span onclick="speakText('security guard')"><strong class="strong">- security guard </strong>: nhân viên bảo vệ</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('arm')"><strong>- arm </strong>: cánh tay</span> <br>
-                    <span onclick="speakText('armpit')"><strong>- armpit </strong>: nách</span> <br>
-                    <span onclick="speakText('buttock')"><strong>- buttock </strong>: mông</span> <br>
-                    <span onclick="speakText('calf')"><strong>- calf </strong>: bắp chân</span> <br>
-                    <span onclick="speakText('chest')"><strong>- chest </strong>: ngực</span> <br>
+                    <span onclick="speakText('arm')"><strong class="strong">- arm </strong>: cánh tay</span> <br>
+                    <span onclick="speakText('armpit')"><strong class="strong">- armpit </strong>: nách</span> <br>
+                    <span onclick="speakText('buttock')"><strong class="strong">- buttock </strong>: mông</span> <br>
+                    <span onclick="speakText('calf')"><strong class="strong">- calf </strong>: bắp chân</span> <br>
+                    <span onclick="speakText('chest')"><strong class="strong">- chest </strong>: ngực</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('chin')"><strong>- chin </strong>: cằm</span> <br>
-                    <span onclick="speakText('elbow')"><strong>- elbow </strong>: khuỷu tay</span> <br>
-                    <span onclick="speakText('forearm')"><strong>- forearm </strong>: cẳng tay</span> <br>
-                    <span onclick="speakText('hip')"><strong>- hip </strong>: hông</span> <br>
-                    <span onclick="speakText('knee')"><strong>- knee </strong>: đầu gối</span> <br>
+                    <span onclick="speakText('chin')"><strong class="strong">- chin </strong>: cằm</span> <br>
+                    <span onclick="speakText('elbow')"><strong class="strong">- elbow </strong>: khuỷu tay</span> <br>
+                    <span onclick="speakText('forearm')"><strong class="strong">- forearm </strong>: cẳng tay</span> <br>
+                    <span onclick="speakText('hip')"><strong class="strong">- hip </strong>: hông</span> <br>
+                    <span onclick="speakText('knee')"><strong class="strong">- knee </strong>: đầu gối</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('mouth')"><strong>- mouth </strong>: miệng</span> <br>
-                    <span onclick="speakText('neck')"><strong>- neck </strong>: cổ</span> <br>
-                    <span onclick="speakText('thigh')"><strong>- thigh </strong>: bắp đùi</span> <br>
-                    <span onclick="speakText('weist')"><strong>- weist </strong>: eo</span> <br>
-                    <span onclick="speakText('fingernail')"><strong>- fingernail </strong>: móng tay</span> <br>
+                    <span onclick="speakText('mouth')"><strong class="strong">- mouth </strong>: miệng</span> <br>
+                    <span onclick="speakText('neck')"><strong class="strong">- neck </strong>: cổ</span> <br>
+                    <span onclick="speakText('thigh')"><strong class="strong">- thigh </strong>: bắp đùi</span> <br>
+                    <span onclick="speakText('weist')"><strong class="strong">- weist </strong>: eo</span> <br>
+                    <span onclick="speakText('fingernail')"><strong class="strong">- fingernail </strong>: móng tay</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('knuckle')"><strong>- knuckle </strong>: khớp đốt ngón tay</span> <br>
-                    <span onclick="speakText('index finger')"><strong>- index finger </strong>: ngón trỏ</span> <br>
-                    <span onclick="speakText('middle finger')"><strong>- middle finger </strong>: ngón giữa</span> <br>
-                    <span onclick="speakText('palm')"><strong>- palm </strong>: lòng bàn tay</span> <br>
-                    <span onclick="speakText('wrist')"><strong>- wrist </strong>: cổ tay</span> <br>
+                    <span onclick="speakText('knuckle')"><strong class="strong">- knuckle </strong>: khớp đốt ngón tay</span> <br>
+                    <span onclick="speakText('index finger')"><strong class="strong">- index finger </strong>: ngón trỏ</span> <br>
+                    <span onclick="speakText('middle finger')"><strong class="strong">- middle finger </strong>: ngón giữa</span> <br>
+                    <span onclick="speakText('palm')"><strong class="strong">- palm </strong>: lòng bàn tay</span> <br>
+                    <span onclick="speakText('wrist')"><strong class="strong">- wrist </strong>: cổ tay</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('cheek')"><strong>- cheek </strong>: má</span> <br>
-                    <span onclick="speakText('ear')"><strong>- ear </strong>: tai</span> <br>
-                    <span onclick="speakText('eyelid')"><strong>- eyelid </strong>: mí mắt</span> <br>
-                    <span onclick="speakText('eyelash')"><strong>- eyelash </strong>: lông mi</span> <br>
-                    <span onclick="speakText('forehead')"><strong>- forehead </strong>: chán</span> <br>
+                    <span onclick="speakText('cheek')"><strong class="strong">- cheek </strong>: má</span> <br>
+                    <span onclick="speakText('ear')"><strong class="strong">- ear </strong>: tai</span> <br>
+                    <span onclick="speakText('eyelid')"><strong class="strong">- eyelid </strong>: mí mắt</span> <br>
+                    <span onclick="speakText('eyelash')"><strong class="strong">- eyelash </strong>: lông mi</span> <br>
+                    <span onclick="speakText('forehead')"><strong class="strong">- forehead </strong>: chán</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('jaw')"><strong>- jaw </strong>: quai hàm</span> <br>
-                    <span onclick="speakText('lip')"><strong>- lip </strong>: môi</span> <br>
-                    <span onclick="speakText('nose')"><strong>- nose </strong>: mũi</span> <br>
-                    <span onclick="speakText('tongue')"><strong>- tongue </strong>: lưỡi</span> <br>
-                    <span onclick="speakText('ankle')"><strong>- ankle </strong>: mắt cá chân</span> <br>
+                    <span onclick="speakText('jaw')"><strong class="strong">- jaw </strong>: quai hàm</span> <br>
+                    <span onclick="speakText('lip')"><strong class="strong">- lip </strong>: môi</span> <br>
+                    <span onclick="speakText('nose')"><strong class="strong">- nose </strong>: mũi</span> <br>
+                    <span onclick="speakText('tongue')"><strong class="strong">- tongue </strong>: lưỡi</span> <br>
+                    <span onclick="speakText('ankle')"><strong class="strong">- ankle </strong>: mắt cá chân</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Big toe')"><strong>- Big toe </strong>: ngón chân cái</span> <br>
-                    <span onclick="speakText('heel')"><strong>- heel </strong>: gót chân</span> <br>
-                    <span onclick="speakText('toenail')"><strong>- toenail </strong>: móng chân</span> <br>
-                    <span onclick="speakText('pupil')"><strong>- pupil </strong>: con ngươi</span> <br>
-                    <span onclick="speakText('Esophagus')"><strong>- Esophagus </strong>: thực quản</span> <br>
+                    <span onclick="speakText('Big toe')"><strong class="strong">- Big toe </strong>: ngón chân cái</span> <br>
+                    <span onclick="speakText('heel')"><strong class="strong">- heel </strong>: gót chân</span> <br>
+                    <span onclick="speakText('toenail')"><strong class="strong">- toenail </strong>: móng chân</span> <br>
+                    <span onclick="speakText('pupil')"><strong class="strong">- pupil </strong>: con ngươi</span> <br>
+                    <span onclick="speakText('Esophagus')"><strong class="strong">- Esophagus </strong>: thực quản</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Intestines')"><strong>- Intestines </strong>: ruột</span> <br>
-                    <span onclick="speakText('Muscle')"><strong>- Muscle </strong>: cơ</span> <br>
-                    <span onclick="speakText('Liver')"><strong>- Liver </strong>: gan</span> <br>
-                    <span onclick="speakText('lung')"><strong>- lung </strong>: phổi</span> <br>
-                    <span onclick="speakText('vein')"><strong>- vein </strong>: tĩnh mạch</span> <br>
-                    <span onclick="speakText('Pancreas ')"><strong>- Pancreas  </strong>: tụy</span> <br>
-                    <span onclick="speakText('Stomatch ')"><strong>- Stomatch  </strong>: dạ dày</span> <br>
+                    <span onclick="speakText('Intestines')"><strong class="strong">- Intestines </strong>: ruột</span> <br>
+                    <span onclick="speakText('Muscle')"><strong class="strong">- Muscle </strong>: cơ</span> <br>
+                    <span onclick="speakText('Liver')"><strong class="strong">- Liver </strong>: gan</span> <br>
+                    <span onclick="speakText('lung')"><strong class="strong">- lung </strong>: phổi</span> <br>
+                    <span onclick="speakText('vein')"><strong class="strong">- vein </strong>: tĩnh mạch</span> <br>
+                    <span onclick="speakText('Pancreas ')"><strong class="strong">- Pancreas  </strong>: tụy</span> <br>
+                    <span onclick="speakText('Stomatch ')"><strong class="strong">- Stomatch  </strong>: dạ dày</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Amaranth ')"><strong>- Amaranth </strong>: rau dền</span> <br>
-                    <span onclick="speakText('Beet ')"><strong>- Beet </strong>: củ cải đường</span> <br>
-                    <span onclick="speakText('Broccoli ')"><strong>- Broccoli </strong>: súp lơ xanh</span> <br>
-                    <span onclick="speakText('Bamboo shoot ')"><strong>- Bamboo shoot </strong>: măng</span> <br>
-                    <span onclick="speakText('Bitter gourd ')"><strong>- Bitter gourd </strong>: mướp đắng</span> <br>
+                    <span onclick="speakText('Amaranth ')"><strong class="strong">- Amaranth </strong>: rau dền</span> <br>
+                    <span onclick="speakText('Beet ')"><strong class="strong">- Beet </strong>: củ cải đường</span> <br>
+                    <span onclick="speakText('Broccoli ')"><strong class="strong">- Broccoli </strong>: súp lơ xanh</span> <br>
+                    <span onclick="speakText('Bamboo shoot ')"><strong class="strong">- Bamboo shoot </strong>: măng</span> <br>
+                    <span onclick="speakText('Bitter gourd ')"><strong class="strong">- Bitter gourd </strong>: mướp đắng</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Cauliflower ')"><strong>- Cauliflower </strong>: súp lơ(trắng)</span> <br>
-                    <span onclick="speakText('Cabbage ')"><strong>- Cabbage </strong>:bắp cải</span> <br>
-                    <span onclick="speakText('Coriander ')"><strong>- Coriander </strong>:rau mùi(ngò)</span> <br>
-                    <span onclick="speakText('Chinese cabbage ')"><strong>- Chinese cabbage </strong>:cải thảo</span> <br>
-                    <span onclick="speakText('Dill ')"><strong>- Dill </strong>:rau thì là</span> <br>
+                    <span onclick="speakText('Cauliflower ')"><strong class="strong">- Cauliflower </strong>: súp lơ(trắng)</span> <br>
+                    <span onclick="speakText('Cabbage ')"><strong class="strong">- Cabbage </strong>:bắp cải</span> <br>
+                    <span onclick="speakText('Coriander ')"><strong class="strong">- Coriander </strong>:rau mùi(ngò)</span> <br>
+                    <span onclick="speakText('Chinese cabbage ')"><strong class="strong">- Chinese cabbage </strong>:cải thảo</span> <br>
+                    <span onclick="speakText('Dill ')"><strong class="strong">- Dill </strong>:rau thì là</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Gourd ')"><strong>- Gourd </strong>:bầu / bí</span> <br>
-                    <span onclick="speakText('Kohlrabi ')"><strong>- Kohlrabi </strong>:củ su hào</span> <br>
-                    <span onclick="speakText('Mushroom ')"><strong>- Mushroom </strong>:nấm</span> <br>
-                    <span onclick="speakText('Pumpkin ')"><strong>- Pumpkin </strong>:bí ngô</span> <br>
-                    <span onclick="speakText('Parsnip ')"><strong>- Parsnip </strong>:củ cải</span> <br>
+                    <span onclick="speakText('Gourd ')"><strong class="strong">- Gourd </strong>:bầu / bí</span> <br>
+                    <span onclick="speakText('Kohlrabi ')"><strong class="strong">- Kohlrabi </strong>:củ su hào</span> <br>
+                    <span onclick="speakText('Mushroom ')"><strong class="strong">- Mushroom </strong>:nấm</span> <br>
+                    <span onclick="speakText('Pumpkin ')"><strong class="strong">- Pumpkin </strong>:bí ngô</span> <br>
+                    <span onclick="speakText('Parsnip ')"><strong class="strong">- Parsnip </strong>:củ cải</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Seaweed ')"><strong>- Seaweed </strong>:rong biển</span> <br>
-                    <span onclick="speakText('Sweet potato ')"><strong>- Sweet potato </strong>:khoai lang</span> <br>
-                    <span onclick="speakText('Taro ')"><strong>-  Taro</strong>:khoai sọ</span> <br>
-                    <span onclick="speakText('Water morning glory ')"><strong>-  Water morning glory</strong>:rau muống</span> <br>
-                    <span onclick="speakText('Spinach ')"><strong>-  Spinach</strong>:cải bó xôi</span> <br>
+                    <span onclick="speakText('Seaweed ')"><strong class="strong">- Seaweed </strong>:rong biển</span> <br>
+                    <span onclick="speakText('Sweet potato ')"><strong class="strong">- Sweet potato </strong>:khoai lang</span> <br>
+                    <span onclick="speakText('Taro ')"><strong class="strong">-  Taro</strong>:khoai sọ</span> <br>
+                    <span onclick="speakText('Water morning glory ')"><strong class="strong">-  Water morning glory</strong>:rau muống</span> <br>
+                    <span onclick="speakText('Spinach ')"><strong class="strong">-  Spinach</strong>:cải bó xôi</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Bean ')"><strong>-  Bean</strong>:đậu</span> <br>
-                    <span onclick="speakText('Cashew ')"><strong>-  Cashew</strong>:hạt điều</span> <br>
-                    <span onclick="speakText('Chestnut ')"><strong>-  Chestnut</strong>:hạt dẻ</span> <br>
-                    <span onclick="speakText('Chia seed ')"><strong>-  Chia seed</strong>:hạt chia</span> <br>
-                    <span onclick="speakText('Peanut ')"><strong>-  Peanut</strong>:hạt lạc</span> <br>
-                    <span onclick="speakText('Green bean ')"><strong>-  Green bean</strong>:đậu cô ve</span> <br>
+                    <span onclick="speakText('Bean ')"><strong class="strong">-  Bean</strong>:đậu</span> <br>
+                    <span onclick="speakText('Cashew ')"><strong class="strong">-  Cashew</strong>:hạt điều</span> <br>
+                    <span onclick="speakText('Chestnut ')"><strong class="strong">-  Chestnut</strong>:hạt dẻ</span> <br>
+                    <span onclick="speakText('Chia seed ')"><strong class="strong">-  Chia seed</strong>:hạt chia</span> <br>
+                    <span onclick="speakText('Peanut ')"><strong class="strong">-  Peanut</strong>:hạt lạc</span> <br>
+                    <span onclick="speakText('Green bean ')"><strong class="strong">-  Green bean</strong>:đậu cô ve</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('avocado ')"><strong>- avocado</strong>:quả bơ</span> <br>
-                    <span onclick="speakText('Cherry ')"><strong>- Cherry</strong>:quả anh đào</span> <br>
-                    <span onclick="speakText('Cantaloupe ')"><strong>- Cantaloupe</strong>:quả dưa vàng</span> <br>
-                    <span onclick="speakText('Custard apple ')"><strong>- Custard apple</strong>:quả mãng cầu</span> <br>
-                    <span onclick="speakText('Grape ')"><strong>- Grape</strong>:quả nho</span> <br>
+                    <span onclick="speakText('avocado ')"><strong class="strong">- avocado</strong>:quả bơ</span> <br>
+                    <span onclick="speakText('Cherry ')"><strong class="strong">- Cherry</strong>:quả anh đào</span> <br>
+                    <span onclick="speakText('Cantaloupe ')"><strong class="strong">- Cantaloupe</strong>:quả dưa vàng</span> <br>
+                    <span onclick="speakText('Custard apple ')"><strong class="strong">- Custard apple</strong>:quả mãng cầu</span> <br>
+                    <span onclick="speakText('Grape ')"><strong class="strong">- Grape</strong>:quả nho</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Guava ')"><strong>- Guava</strong>:quả ổi</span> <br>
-                    <span onclick="speakText('Honeydew ')"><strong>- Honeydew</strong>:quả dưa xanh</span> <br>
-                    <span onclick="speakText('Kumquat ')"><strong>- Kumquat</strong>:quả quất</span> <br>
-                    <span onclick="speakText('Longan ')"><strong>- Longan</strong>:quả nhãn</span> <br>
-                    <span onclick="speakText('Lychee ')"><strong>- Lychee</strong>:quả vải</span> <br>
+                    <span onclick="speakText('Guava ')"><strong class="strong">- Guava</strong>:quả ổi</span> <br>
+                    <span onclick="speakText('Honeydew ')"><strong class="strong">- Honeydew</strong>:quả dưa xanh</span> <br>
+                    <span onclick="speakText('Kumquat ')"><strong class="strong">- Kumquat</strong>:quả quất</span> <br>
+                    <span onclick="speakText('Longan ')"><strong class="strong">- Longan</strong>:quả nhãn</span> <br>
+                    <span onclick="speakText('Lychee ')"><strong class="strong">- Lychee</strong>:quả vải</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Mandarin ')"><strong>- Mandarin</strong>:quả quýt</span> <br>
-                    <span onclick="speakText('Mangosteen ')"><strong>- Mangosteen</strong>:quả măng cụt</span> <br>
-                    <span onclick="speakText('Passion fruit ')"><strong>- Passion fruit</strong>:chanh dây</span> <br>
-                    <span onclick="speakText('Strawberry ')"><strong>- Strawberry</strong>:dâu tây</span> <br>
-                    <span onclick="speakText('Star apple ')"><strong>- Star apple</strong>:vú sữa</span> <br>
-                    <span onclick="speakText('Enoki mushroom ')"><strong>- Enoki mushroom</strong>:nấm kim châm</span> <br>
+                    <span onclick="speakText('Mandarin ')"><strong class="strong">- Mandarin</strong>:quả quýt</span> <br>
+                    <span onclick="speakText('Mangosteen ')"><strong class="strong">- Mangosteen</strong>:quả măng cụt</span> <br>
+                    <span onclick="speakText('Passion fruit ')"><strong class="strong">- Passion fruit</strong>:chanh dây</span> <br>
+                    <span onclick="speakText('Strawberry ')"><strong class="strong">- Strawberry</strong>:dâu tây</span> <br>
+                    <span onclick="speakText('Star apple ')"><strong class="strong">- Star apple</strong>:vú sữa</span> <br>
+                    <span onclick="speakText('Enoki mushroom ')"><strong class="strong">- Enoki mushroom</strong>:nấm kim châm</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Ambitious ')"><strong>- Ambitious</strong>:có tham vọng</span> <br>
-                    <span onclick="speakText('Brave ')"><strong>- Brave</strong>:dũng cảm</span> <br>
-                    <span onclick="speakText('Brilliant ')"><strong>- Brilliant</strong>:tài ba</span> <br>
-                    <span onclick="speakText('Calm ')"><strong>- Calm</strong>:bình tĩnh</span> <br>
-                    <span onclick="speakText('Careful ')"><strong>- Careful</strong>:cẩn thận</span> <br>
+                    <span onclick="speakText('Ambitious ')"><strong class="strong">- Ambitious</strong>:có tham vọng</span> <br>
+                    <span onclick="speakText('Brave ')"><strong class="strong">- Brave</strong>:dũng cảm</span> <br>
+                    <span onclick="speakText('Brilliant ')"><strong class="strong">- Brilliant</strong>:tài ba</span> <br>
+                    <span onclick="speakText('Calm ')"><strong class="strong">- Calm</strong>:bình tĩnh</span> <br>
+                    <span onclick="speakText('Careful ')"><strong class="strong">- Careful</strong>:cẩn thận</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Cautious ')"><strong>- Cautious</strong>:thận trọng</span> <br>
-                    <span onclick="speakText('Charming ')"><strong>- Charming</strong>:quyến rũ</span> <br>
-                    <span onclick="speakText('Cheerful/ Amusing ')"><strong>- Cheerful/ Amusing</strong>:vui vẻ</span> <br>
-                    <span onclick="speakText('Clever ')"><strong>- Clever</strong>:thông minh</span> <br>
-                    <span onclick="speakText('Competitive ')"><strong>- Competitive</strong>:cạnh tranh</span> <br>
+                    <span onclick="speakText('Cautious ')"><strong class="strong">- Cautious</strong>:thận trọng</span> <br>
+                    <span onclick="speakText('Charming ')"><strong class="strong">- Charming</strong>:quyến rũ</span> <br>
+                    <span onclick="speakText('Cheerful    Amusing')"><strong class="strong">- Cheerful/ Amusing</strong>:vui vẻ</span> <br>
+                    <span onclick="speakText('Clever ')"><strong class="strong">- Clever</strong>:thông minh</span> <br>
+                    <span onclick="speakText('Competitive ')"><strong class="strong">- Competitive</strong>:cạnh tranh</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Confident ')"><strong>- Confident</strong>:tự tin</span> <br>
-                    <span onclick="speakText('Considerate ')"><strong>- Considerate</strong>:chu đáo</span> <br>
-                    <span onclick="speakText('Dependable/ Reliable ')"><strong>- Dependable/ Reliable</strong>:đáng tin cậy</span> <br>
-                    <span onclick="speakText('Easy-going ')"><strong>- Easy-going</strong>:dễ gần</span> <br>
-                    <span onclick="speakText('Enthusiastic ')"><strong>- Enthusiastic</strong>:nhiệt tình</span> <br>
+                    <span onclick="speakText('Confident ')"><strong class="strong">- Confident</strong>:tự tin</span> <br>
+                    <span onclick="speakText('Considerate ')"><strong class="strong">- Considerate</strong>:chu đáo</span> <br>
+                    <span onclick="speakText('Dependable     Reliable')"><strong class="strong">- Dependable/ Reliable</strong>:đáng tin cậy</span> <br>
+                    <span onclick="speakText('Easy-going ')"><strong class="strong">- Easy-going</strong>:dễ gần</span> <br>
+                    <span onclick="speakText('Enthusiastic ')"><strong class="strong">- Enthusiastic</strong>:nhiệt tình</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Exciting ')"><strong>- Exciting</strong>:thú vị</span> <br>
-                    <span onclick="speakText('Faithful ')"><strong>- Faithful</strong>:chung thủy</span> <br>
-                    <span onclick="speakText('Friendly ')"><strong>- Friendly</strong>:thân thiện</span> <br>
-                    <span onclick="speakText('Generous ')"><strong>- Generous</strong>:rộng lượng</span> <br>
-                    <span onclick="speakText('Gentle ')"><strong>- Gentle</strong>:nhẹ nhàng</span> <br>
+                    <span onclick="speakText('Exciting ')"><strong class="strong">- Exciting</strong>:thú vị</span> <br>
+                    <span onclick="speakText('Faithful ')"><strong class="strong">- Faithful</strong>:chung thủy</span> <br>
+                    <span onclick="speakText('Friendly ')"><strong class="strong">- Friendly</strong>:thân thiện</span> <br>
+                    <span onclick="speakText('Generous ')"><strong class="strong">- Generous</strong>:rộng lượng</span> <br>
+                    <span onclick="speakText('Gentle ')"><strong class="strong">- Gentle</strong>:nhẹ nhàng</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Hard-working ')"><strong>- Hard-working</strong>:chăm chỉ</span> <br>
-                    <span onclick="speakText('Honest')"><strong>- Honest</strong>:thật thà</span> <br>
-                    <span onclick="speakText('Humorous')"><strong>- Humorous</strong>:hài hước</span> <br>
-                    <span onclick="speakText('Humble')"><strong>- Humble</strong>:khiêm tốn</span> <br>
-                    <span onclick="speakText('Kind')"><strong>- Kind</strong>:tốt bụng</span> <br>
+                    <span onclick="speakText('Hard-working ')"><strong class="strong">- Hard-working</strong>:chăm chỉ</span> <br>
+                    <span onclick="speakText('Honest')"><strong class="strong">- Honest</strong>:thật thà</span> <br>
+                    <span onclick="speakText('Humorous')"><strong class="strong">- Humorous</strong>:hài hước</span> <br>
+                    <span onclick="speakText('Humble')"><strong class="strong">- Humble</strong>:khiêm tốn</span> <br>
+                    <span onclick="speakText('Kind')"><strong class="strong">- Kind</strong>:tốt bụng</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Loyal')"><strong>- Loyal</strong>:trung thành</span> <br>
-                    <span onclick="speakText('Optimistic')"><strong>- Optimistic</strong>:lạc quan</span> <br>
-                    <span onclick="speakText('Patient ')"><strong>- Patient </strong>:kiên nhẫn</span> <br>
-                    <span onclick="speakText('Sincere  ')"><strong>- Sincere  </strong>:thành thật</span> <br>
+                    <span onclick="speakText('Loyal')"><strong class="strong">- Loyal</strong>:trung thành</span> <br>
+                    <span onclick="speakText('Optimistic')"><strong class="strong">- Optimistic</strong>:lạc quan</span> <br>
+                    <span onclick="speakText('Patient ')"><strong class="strong">- Patient </strong>:kiên nhẫn</span> <br>
+                    <span onclick="speakText('Sincere  ')"><strong class="strong">- Sincere  </strong>:thành thật</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Soft')"><strong>- Soft</strong>:dịu dàng</span> <br>
-                    <span onclick="speakText('Talented')"><strong>- Talented</strong>:tài năng</span> <br>
-                    <span onclick="speakText('Talkative')"><strong>- Talkative</strong>:hoạt ngôn</span> <br>
-                    <span onclick="speakText('Understanding ')"><strong>- Understanding </strong>:hiểu biết</span> <br>
-                    <span onclick="speakText('Aggressive ')"><strong>- Aggressive </strong>:hung hăng</span> <br>
+                    <span onclick="speakText('Soft')"><strong class="strong">- Soft</strong>:dịu dàng</span> <br>
+                    <span onclick="speakText('Talented')"><strong class="strong">- Talented</strong>:tài năng</span> <br>
+                    <span onclick="speakText('Talkative')"><strong class="strong">- Talkative</strong>:hoạt ngôn</span> <br>
+                    <span onclick="speakText('Understanding ')"><strong class="strong">- Understanding </strong>:hiểu biết</span> <br>
+                    <span onclick="speakText('Aggressive ')"><strong class="strong">- Aggressive </strong>:hung hăng</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Bad-tempered ')"><strong>- Bad-tempered </strong>:nóng tính</span> <br>
-                    <span onclick="speakText('Boast ')"><strong>- Boast </strong>:khoe khoang</span> <br>
-                    <span onclick="speakText('Boring ')"><strong>- Boring </strong>:tẻ nhạt</span> <br>
-                    <span onclick="speakText('Bossy ')"><strong>- Bossy </strong>:hách dịch</span> <br>
-                    <span onclick="speakText('Careless ')"><strong>- Careless </strong>:bất cẩn</span> <br>
+                    <span onclick="speakText('Bad-tempered ')"><strong class="strong">- Bad-tempered </strong>:nóng tính</span> <br>
+                    <span onclick="speakText('Boast ')"><strong class="strong">- Boast </strong>:khoe khoang</span> <br>
+                    <span onclick="speakText('Boring ')"><strong class="strong">- Boring </strong>:tẻ nhạt</span> <br>
+                    <span onclick="speakText('Bossy ')"><strong class="strong">- Bossy </strong>:hách dịch</span> <br>
+                    <span onclick="speakText('Careless ')"><strong class="strong">- Careless </strong>:bất cẩn</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Crazy/Mad ')"><strong>- Crazy/Mad </strong>:điên khùng</span> <br>
-                    <span onclick="speakText('Cruel ')"><strong>- Cruel </strong>:độc ác</span> <br>
-                    <span onclick="speakText('Foolish ')"><strong>- Foolish </strong>:ngu ngốc</span> <br>
-                    <span onclick="speakText('Haughty  ')"><strong>- Haughty  </strong>:kiêu căng</span> <br>
-                    <span onclick="speakText('Gruff  ')"><strong>- Gruff  </strong>:thô lỗ</span> <br>
+                    <span onclick="speakText('Crazy     Mad ')"><strong class="strong">- Crazy/Mad </strong>:điên khùng</span> <br>
+                    <span onclick="speakText('Cruel ')"><strong class="strong">- Cruel </strong>:độc ác</span> <br>
+                    <span onclick="speakText('Foolish ')"><strong class="strong">- Foolish </strong>:ngu ngốc</span> <br>
+                    <span onclick="speakText('Haughty  ')"><strong class="strong">- Haughty  </strong>:kiêu căng</span> <br>
+                    <span onclick="speakText('Gruff  ')"><strong class="strong">- Gruff  </strong>:thô lỗ</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Impolite')"><strong>- Impolite </strong>:mất lịch sự</span> <br>
-                    <span onclick="speakText('Insolent')"><strong>- Insolent </strong>:láo xược</span> <br>
-                    <span onclick="speakText('Jealous')"><strong>- Jealous </strong>:hay ganh tỵ</span> <br>
-                    <span onclick="speakText('Mean')"><strong>- Mean </strong>:keo kiệt / ích kỉ</span> <br>
-                    <span onclick="speakText('Quiet')"><strong>- Quiet </strong>:ít nói</span> <br>
+                    <span onclick="speakText('Impolite')"><strong class="strong">- Impolite </strong>:mất lịch sự</span> <br>
+                    <span onclick="speakText('Insolent')"><strong class="strong">- Insolent </strong>:láo xược</span> <br>
+                    <span onclick="speakText('Jealous')"><strong class="strong">- Jealous </strong>:hay ganh tỵ</span> <br>
+                    <span onclick="speakText('Mean')"><strong class="strong">- Mean </strong>:keo kiệt / ích kỉ</span> <br>
+                    <span onclick="speakText('Quiet')"><strong class="strong">- Quiet </strong>:ít nói</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Silly/ Stupid ')"><strong>- Silly/ Stupid</strong>:ngu ngốc</span> <br>
-                    <span onclick="speakText('Reckless')"><strong>- Reckless </strong>:hấp tấp</span> <br>
-                    <span onclick="speakText('Selfish')"><strong>- Selfish </strong>:ích kỉ</span> <br>
-                    <span onclick="speakText('Stubborn')"><strong>- Stubborn </strong>:bướng bỉnh</span> <br>
-                    <span onclick="speakText('Shy')"><strong>- Shy </strong>:nhút nhát</span> <br>
-                    <span onclick="speakText('Unpleasant')"><strong>- Unpleasant </strong>: khó chịu</span> <br>
+                    <span onclick="speakText('Silly    Stupid ')"><strong class="strong">- Silly / Stupid</strong>:ngu ngốc</span> <br>
+                    <span onclick="speakText('Reckless')"><strong class="strong">- Reckless </strong>:hấp tấp</span> <br>
+                    <span onclick="speakText('Selfish')"><strong class="strong">- Selfish </strong>:ích kỉ</span> <br>
+                    <span onclick="speakText('Stubborn')"><strong class="strong">- Stubborn </strong>:bướng bỉnh</span> <br>
+                    <span onclick="speakText('Shy')"><strong class="strong">- Shy </strong>:nhút nhát</span> <br>
+                    <span onclick="speakText('Unpleasant')"><strong class="strong">- Unpleasant </strong>: khó chịu</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Boots')"><strong>- Boots </strong>:Bốt/ Cao cổ</span> <br>
-                    <span onclick="speakText('Chunky heel')"><strong>- Chunky heel </strong>:cao gót đế thô</span> <br>
-                    <span onclick="speakText('Clog')"><strong>- Clog </strong>:guốc</span> <br>
-                    <span onclick="speakText('Loafer')"><strong>- Loafer </strong>:giày lười</span> <br>
-                    <span onclick="speakText('Sneaker ')"><strong>- Sneaker  </strong>:giày thể thao</span> <br>
+                    <span onclick="speakText('Boots')"><strong class="strong">- Boots </strong>:Bốt/ Cao cổ</span> <br>
+                    <span onclick="speakText('Chunky heel')"><strong class="strong">- Chunky heel </strong>:cao gót đế thô</span> <br>
+                    <span onclick="speakText('Clog')"><strong class="strong">- Clog </strong>:guốc</span> <br>
+                    <span onclick="speakText('Loafer')"><strong class="strong">- Loafer </strong>:giày lười</span> <br>
+                    <span onclick="speakText('Sneaker ')"><strong class="strong">- Sneaker  </strong>:giày thể thao</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Baseball cap ')"><strong>- Baseball cap  </strong>:mũ lưỡi trai</span> <br>
-                    <span onclick="speakText('Hard hat ')"><strong>- Hard hat  </strong>:mũ bảo hộ</span> <br>
-                    <span onclick="speakText('Helmet')"><strong>- Helmet</strong>:mũ bảo hiểm</span> <br>
-                    <span onclick="speakText('Anorak ')"><strong>- Anorak </strong>:áo khoác có mũ</span> <br>
-                    <span onclick="speakText('Belt ')"><strong>- Belt </strong>:thắt lưng</span> <br>
+                    <span onclick="speakText('Baseball cap ')"><strong class="strong">- Baseball cap  </strong>:mũ lưỡi trai</span> <br>
+                    <span onclick="speakText('Hard hat ')"><strong class="strong">- Hard hat  </strong>:mũ bảo hộ</span> <br>
+                    <span onclick="speakText('Helmet')"><strong class="strong">- Helmet</strong>:mũ bảo hiểm</span> <br>
+                    <span onclick="speakText('Anorak ')"><strong class="strong">- Anorak </strong>:áo khoác có mũ</span> <br>
+                    <span onclick="speakText('Belt ')"><strong class="strong">- Belt </strong>:thắt lưng</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Blouse')"><strong>- Blouse</strong>:sơ mi nữ</span> <br>
-                    <span onclick="speakText('Boxer shorts')"><strong>- Boxer shorts</strong>:quần đùi</span> <br>
-                    <span onclick="speakText('Bra')"><strong>- Bra</strong>:áo lót nữ</span> <br>
-                    <span onclick="speakText('Coat')"><strong>- Coat</strong>:áo khoác</span> <br>
-                    <span onclick="speakText('Dress')"><strong>- Dress</strong>:váy liền</span> <br>
+                    <span onclick="speakText('Blouse')"><strong class="strong">- Blouse</strong>:sơ mi nữ</span> <br>
+                    <span onclick="speakText('Boxer shorts')"><strong class="strong">- Boxer shorts</strong>:quần đùi</span> <br>
+                    <span onclick="speakText('Bra')"><strong class="strong">- Bra</strong>:áo lót nữ</span> <br>
+                    <span onclick="speakText('Coat')"><strong class="strong">- Coat</strong>:áo khoác</span> <br>
+                    <span onclick="speakText('Dress')"><strong class="strong">- Dress</strong>:váy liền</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Kitchen')"><strong>- Kitchen</strong>:phòng bếp</span> <br>
-                    <span onclick="speakText('Standing')"><strong>- Standing</strong>:đứng</span> <br>
-                    <span onclick="speakText('Post')"><strong>- Post</strong>:bưu kiện / bưu điện</span> <br>
-                    <span onclick="speakText('floor')"><strong>- floor</strong>:sàn nhà</span> <br>
+                    <span onclick="speakText('Kitchen')"><strong class="strong">- Kitchen</strong>:phòng bếp</span> <br>
+                    <span onclick="speakText('Standing')"><strong class="strong">- Standing</strong>:đứng</span> <br>
+                    <span onclick="speakText('Post')"><strong class="strong">- Post</strong>:bưu kiện / bưu điện</span> <br>
+                    <span onclick="speakText('floor')"><strong class="strong">- floor</strong>:sàn nhà</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('across')"><strong>- across</strong>:sang</span> <br>
-                    <span onclick="speakText('theater')"><strong>- theater</strong>:rạp chiếu phim</span> <br>
-                    <span onclick="speakText('colleges')"><strong>- colleges</strong>:tường cao đẳng</span> <br>
-                    <span onclick="speakText('grant')"><strong>- grant</strong>:khoản trợ cấp</span> <br>
-                    <span onclick="speakText('government')"><strong>- government</strong>:chính phủ</span> <br>
+                    <span onclick="speakText('across')"><strong class="strong">- across</strong>:sang</span> <br>
+                    <span onclick="speakText('theater')"><strong class="strong">- theater</strong>:rạp chiếu phim</span> <br>
+                    <span onclick="speakText('colleges')"><strong class="strong">- colleges</strong>:tường cao đẳng</span> <br>
+                    <span onclick="speakText('grant')"><strong class="strong">- grant</strong>:khoản trợ cấp</span> <br>
+                    <span onclick="speakText('government')"><strong class="strong">- government</strong>:chính phủ</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('loan')"><strong>- loan</strong>:khoản vay</span> <br>
-                    <span onclick="speakText('concert')"><strong>- concert</strong>:buổi hòa nhạc</span> <br>
-                    <span onclick="speakText('church')"><strong>- church</strong>:nhà thờ</span> <br>
-                    <span onclick="speakText('corner')"><strong>- corner</strong>:góc</span> <br>
-                    <span onclick="speakText('near ')"><strong>- near </strong>:gần</span> <br>
+                    <span onclick="speakText('loan')"><strong class="strong">- loan</strong>:khoản vay</span> <br>
+                    <span onclick="speakText('concert')"><strong class="strong">- concert</strong>:buổi hòa nhạc</span> <br>
+                    <span onclick="speakText('church')"><strong class="strong">- church</strong>:nhà thờ</span> <br>
+                    <span onclick="speakText('corner')"><strong class="strong">- corner</strong>:góc</span> <br>
+                    <span onclick="speakText('near ')"><strong class="strong">- near </strong>:gần</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('station')"><strong>- station</strong>:ga tàu</span> <br>
-                    <span onclick="speakText('borrowed')"><strong>- borrowed</strong>:mượn</span> <br>
-                    <span onclick="speakText('disturb')"><strong>- disturb</strong>:quấy rầy</span> <br>
-                    <span onclick="speakText('elevator')"><strong>- elevator</strong>:thang máy</span> <br>
+                    <span onclick="speakText('station')"><strong class="strong">- station</strong>:ga tàu</span> <br>
+                    <span onclick="speakText('borrowed')"><strong class="strong">- borrowed</strong>:mượn</span> <br>
+                    <span onclick="speakText('disturb')"><strong class="strong">- disturb</strong>:quấy rầy</span> <br>
+                    <span onclick="speakText('elevator')"><strong class="strong">- elevator</strong>:thang máy</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Gloves')"><strong>- Gloves</strong>:găng tay</span> <br>
-                    <span onclick="speakText('Jacket')"><strong>- Jacket</strong>:áo khoác ngắn</span> <br>
-                    <span onclick="speakText('Jumper')"><strong>- Jumper</strong>:áo len</span> <br>
-                    <span onclick="speakText('Pyjamas')"><strong>- Pyjamas</strong>:bộ đồ ngủ</span> <br>
-                    <span onclick="speakText('Sneezing')"><strong>- Sneezing</strong>:hắt xì</span> <br>
+                    <span onclick="speakText('Gloves')"><strong class="strong">- Gloves</strong>:găng tay</span> <br>
+                    <span onclick="speakText('Jacket')"><strong class="strong">- Jacket</strong>:áo khoác ngắn</span> <br>
+                    <span onclick="speakText('Jumper')"><strong class="strong">- Jumper</strong>:áo len</span> <br>
+                    <span onclick="speakText('Pyjamas')"><strong class="strong">- Pyjamas</strong>:bộ đồ ngủ</span> <br>
+                    <span onclick="speakText('Sneezing')"><strong class="strong">- Sneezing</strong>:hắt xì</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Fever')"><strong>- Fever</strong>:bị sốt</span> <br>
-                    <span onclick="speakText('Serious')"><strong>- Serious</strong>:nghiêm trọng</span> <br>
-                    <span onclick="speakText('attendees')"><strong>- attendees</strong>:người tham dự</span> <br>
-                    <span onclick="speakText('repairman')"><strong>- repairman</strong>:thợ sửa chữa</span> <br>
-                    <span onclick="speakText('repair')"><strong>- repair</strong>:sửa chữa</span> <br>
-                    <span onclick="speakText('break / broken')"><strong>- break / broken</strong>:phá vỡ</span> <br>
-                    <span onclick="speakText('actually')"><strong>- actually</strong>:thực ra</span> <br>
+                    <span onclick="speakText('Fever')"><strong class="strong">- Fever</strong>:bị sốt</span> <br>
+                    <span onclick="speakText('Serious')"><strong class="strong">- Serious</strong>:nghiêm trọng</span> <br>
+                    <span onclick="speakText('attendees')"><strong class="strong">- attendees</strong>:người tham dự</span> <br>
+                    <span onclick="speakText('repairman')"><strong class="strong">- repairman</strong>:thợ sửa chữa</span> <br>
+                    <span onclick="speakText('repair')"><strong class="strong">- repair</strong>:sửa chữa</span> <br>
+                    <span onclick="speakText('break')"><strong class="strong">- break</strong>:phá vỡ</span> <br>
+                    <span onclick="speakText('Stupid')"><strong class="strong">- Stupid</strong>:phá vỡ</span> <br>
+                    <span onclick="speakText('actually')"><strong class="strong">- actually</strong>:thực ra</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Knickers')"><strong>- Knickers</strong>:quần lót nữ</span> <br>
-                    <span onclick="speakText('Underpants')"><strong>- Underpants</strong>:quần lót nam</span> <br>
-                    <span onclick="speakText('Raincoat')"><strong>- Raincoat</strong>:áo mưa</span> <br>
-                    <span onclick="speakText('Shirt ')"><strong>- Shirt </strong>:sơ mi</span> <br>
-                    <span onclick="speakText('Skirt ')"><strong>- Skirt </strong>:chân váy</span> <br>
-                    <span onclick="speakText('Trousers ')"><strong>- Trousers </strong>:quần dài</span> <br>
+                    <span onclick="speakText('Knickers')"><strong class="strong">- Knickers</strong>:quần lót nữ</span> <br>
+                    <span onclick="speakText('Underpants')"><strong class="strong">- Underpants</strong>:quần lót nam</span> <br>
+                    <span onclick="speakText('Raincoat')"><strong class="strong">- Raincoat</strong>:áo mưa</span> <br>
+                    <span onclick="speakText('Shirt ')"><strong class="strong">- Shirt </strong>:sơ mi</span> <br>
+                    <span onclick="speakText('Skirt ')"><strong class="strong">- Skirt </strong>:chân váy</span> <br>
+                    <span onclick="speakText('Trousers ')"><strong class="strong">- Trousers </strong>:quần dài</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Bright')"><strong>- Bright</strong>:sáng sủa</span> <br>
-                    <span onclick="speakText('Foggy')"><strong>- Foggy</strong>:sương mù</span> <br>
-                    <span onclick="speakText('Gloomy')"><strong>- Gloomy</strong>:ảm đạm</span> <br>
-                    <span onclick="speakText('Humid')"><strong>- Humid</strong>:ẩm</span> <br>
-                    <span onclick="speakText('Overcast')"><strong>- Overcast</strong>:âm u</span> <br>
+                    <span onclick="speakText('Bright')"><strong class="strong">- Bright</strong>:sáng sủa</span> <br>
+                    <span onclick="speakText('Foggy')"><strong class="strong">- Foggy</strong>:sương mù</span> <br>
+                    <span onclick="speakText('Gloomy')"><strong class="strong">- Gloomy</strong>:ảm đạm</span> <br>
+                    <span onclick="speakText('Humid')"><strong class="strong">- Humid</strong>:ẩm</span> <br>
+                    <span onclick="speakText('Overcast')"><strong class="strong">- Overcast</strong>:âm u</span> <br>
                     <span class="border"></span>
-                    <span onclick="speakText('Thunder')"><strong>- Thunder</strong>:sấm sét</span> <br>
-                    <span onclick="speakText('Flood')"><strong>- Flood</strong>:lũ lụt</span> <br>
-                    <span onclick="speakText('Hail')"><strong>- Hail</strong>:mưa đá</span> <br>
+                    <span onclick="speakText('Thunder')"><strong class="strong">- Thunder</strong>:sấm sét</span> <br>
+                    <span onclick="speakText('Flood')"><strong class="strong">- Flood</strong>:lũ lụt</span> <br>
+                    <span onclick="speakText('Hail')"><strong class="strong">- Hail</strong>:mưa đá</span> <br>
                     <span class="border"></span>
                     <span><strong style="font-size: 20px; color:red;">Các từ thường gặp trong TOEIC</strong></span> <br>
-                    <span onclick="speakText('arranged')"><strong>- arranged</strong>:sắp xếp</span> <br>
-                    <span onclick="speakText('stairway')"><strong>- stairway</strong>:cầu thang bộ</span> <br>
-                    <span onclick="speakText('surround')"><strong>- surround</strong>:vây quanh</span> <br>
-                    <span onclick="speakText('beneath')"><strong>- beneath</strong>:bên dưới</span> <br>
-                    <span onclick="speakText('climb')"><strong>- climb</strong>:leo trèo</span> <br>
-                    <span onclick="speakText('conduct')"><strong>- conduct</strong>:tổ chức , thực hiện</span> <br>
-                    <span onclick="speakText('ladder')"><strong>- ladder</strong>:cái thang</span> <br>
-                    <span onclick="speakText('microphone')"><strong>- microphone</strong>:cái mic</span> <br>
-                    <span onclick="speakText('stand')"><strong>- stand</strong>:đứng</span> <br>
-                    <span onclick="speakText('desk')"><strong>- desk</strong>:cái bàn</span> <br>
-                    <span onclick="speakText('broom')"><strong>- broom</strong>:cái chổi</span> <br>
-                    <span onclick="speakText('carry')"><strong>- carry</strong>:mang vác</span> <br>
-                    <span onclick="speakText('pour')"><strong>- pour</strong>:rót đổ</span> <br>
-                    <span onclick="speakText('examine')"><strong>- examine</strong>:kiểm tra , xem xét</span> <br>
-                    <span onclick="speakText('liquid')"><strong>- liquid</strong>:chất lỏng</span> <br>
-                    <span onclick="speakText('write')"><strong>- write</strong>:viết</span> <br>
-                    <span onclick="speakText('lying')"><strong>- lying</strong>:đang nằm</span> <br>
-                    <span onclick="speakText('grass')"><strong>- grass</strong>:bãi cỏ</span> <br>
-                    <span onclick="speakText('bench')"><strong>- bench</strong>:ghế dài</span> <br>
-                    <span onclick="speakText('outdoors')"><strong>- outdoors</strong>:ngoài trời</span> <br>
-                    <span onclick="speakText('typing')"><strong>- typing</strong>:đánh máy</span> <br>
-                    <span onclick="speakText('tie')"><strong>- tie</strong>:cà vạt</span> <br>
-                    <span onclick="speakText('counter')"><strong>- counter</strong>:quầy kệ bàn</span> <br>
-                    <span onclick="speakText('briefcase')"><strong>- briefcase</strong>:va li công tác</span> <br>
-                    <span onclick="speakText('sweeping')"><strong>- sweeping</strong>:đang quét dọn</span> <br>
-                    <span onclick="speakText('diner')"><strong>- diner</strong>:người ăn tiệm</span> <br>
-                    <span onclick="speakText('drawer')"><strong>- drawer</strong>:ngăn kéo</span> <br>
-                    <span onclick="speakText('lecture')"><strong>- lecture</strong>:bài học</span> <br>
-                    <span onclick="speakText('teddy bear')"><strong>- teddy bear</strong>:gấu bông</span> <br>
-                    <span onclick="speakText('stuck')"><strong>- stuck</strong>:mắc kẹt</span> <br>
-                    <span onclick="speakText('feature')"><strong>- feature</strong>:tính năng</span> <br>
-                    <span onclick="speakText('movement')"><strong>- movement</strong>:sự chuyển động</span> <br>
-                    <span onclick="speakText('countless')"><strong>- countless</strong>:vô số</span> <br>
-                    <span onclick="speakText('culture')"><strong>- culture</strong>:văn hóa</span> <br>
-                    <span onclick="speakText('knowledge')"><strong>- knowledge</strong>:kiến thức</span> <br>
-                    <span onclick="speakText('globe')"><strong>- globe</strong>:khối cầu</span> <br>
-                    <span onclick="speakText('acquainted')"><strong>- acquainted</strong>:hiểu biết</span> <br>
-                    <span onclick="speakText('specialize')"><strong>- specialize</strong>:chuyên môn</span> <br>
-                    <span onclick="speakText('according')"><strong>- according</strong>: đi theo</span> <br>
-                    <span onclick="speakText('possible')"><strong>- possible</strong>: khả thi</span> <br>
-                    <span onclick="speakText('little')"><strong>- little</strong>: nhỏ bé</span> <br>
-                    <span onclick="speakText('parts')"><strong>- parts</strong>: các bộ phận</span> <br>
-                    <span onclick="speakText('clearly')"><strong>- clearly</strong>: rõ ràng</span> <br>
-                    <span onclick="speakText('nervous')"><strong>- nervous</strong>: lo lắng</span> <br>
-                    <span onclick="speakText('without')"><strong>- without</strong>: không có</span> <br>
-                    <span onclick="speakText('inventor')"><strong>- inventor</strong>:người phát minh</span> <br>
-                    <span onclick="speakText('statements')"><strong>- statements</strong>:các câu lệnh</span> <br>
-                    <span onclick="speakText('sitting')"><strong>- sitting</strong>:ngồi</span> <br>
-                    <span onclick="speakText('reception')"><strong>- reception</strong>:thu nhận</span> <br>
-                    <span onclick="speakText('instructor')"><strong>- instructor</strong>:người hướng dẫn</span> <br>
-                    <span onclick="speakText('curtains')"><strong>- curtains</strong>:rèm cửa</span> <br>
-                    <span onclick="speakText('examining')"><strong>- examining</strong>:kiểm tra</span> <br>
-                    <span onclick="speakText('similar')"><strong>- similar</strong>:tương tự</span> <br>
-                    <span onclick="speakText('complaint')"><strong>- complaint</strong>:lời phàn nàn</span> <br>
-                    <span onclick="speakText('shelves')"><strong>- shelves</strong>:những cái kệ</span> <br>
-                    <span onclick="speakText('scooter')"><strong>- scooter.</strong>:xe tay ga</span> <br>
-                    <span onclick="speakText('manual')"><strong>- manual</strong>:thủ công</span> <br>
-                    <span onclick="speakText('chain')"><strong>- chain</strong>:xích</span> <br>
-                    <span onclick="speakText('holding')"><strong>- holding</strong>:giữ</span> <br>
-                    <span onclick="speakText('away')"><strong>- away</strong>:xa</span> <br>
-                    <span onclick="speakText('courtside')"><strong>- courtside</strong>:bên lề đường</span> <br>
-                    <span onclick="speakText('lifting')"><strong>- lifting</strong>:nâng hạ</span> <br>
-                    <span onclick="speakText('furniture')"><strong>- furniture.</strong>:đồ nội thất</span> <br>
-                    <span onclick="speakText('gathered')"><strong>- gathered</strong>:tập hợp lại</span> <br>
-                    <span onclick="speakText('bending')"><strong>- bending</strong>:uốn cong</span> <br>
-                    <span onclick="speakText('hanging')"><strong>- hanging</strong>:treo</span> <br>
-                    <span onclick="speakText('carpet')"><strong>- carpet</strong>:thảm</span> <br>
-                    <span onclick="speakText('hanger')"><strong>- hanger</strong>:móc áo</span> <br>
-                    <span onclick="speakText('against')"><strong>- against</strong>:chống lại</span> <br>
-                    <span onclick="speakText('a doorway')"><strong>- a doorway</strong>:1 ô cửa</span> <br>
-                    <span onclick="speakText('wearing glasses')"><strong>- wearing glasses</strong>:đeo kính</span> <br>
-                    <span onclick="speakText('merchandise')"><strong>- merchandise</strong>:hàng hóa</span> <br>
-                    <span onclick="speakText('piling up')"><strong>- piling up</strong>:chất đống</span> <br>
-                    <span onclick="speakText('toolbox')"><strong>- toolbox</strong>:hộp công cụ</span> <br>
-                    <span onclick="speakText('stacked')"><strong>- stacked</strong>:xếp chồng lên nhau</span> <br>
-                    <span onclick="speakText('fixtures')"><strong>- fixtures</strong>:đồ đạc</span> <br>
-                    <span onclick="speakText('mounted')"><strong>- mounted</strong>:gắn</span> <br>
-                    <span onclick="speakText('on the wall')"><strong>- on the wall</strong>:trên tường</span> <br>
-                    <span onclick="speakText('tablecloths')"><strong>- tablecloths</strong>:khăn trải bàn</span> <br>
-                    <span onclick="speakText('scissors')"><strong>- scissors</strong>:cái kéo</span> <br>
+                    <span onclick="speakText('arranged')"><strong class="strong">- arranged</strong>:sắp xếp</span> <br>
+                    <span onclick="speakText('stairway')"><strong class="strong">- stairway</strong>:cầu thang bộ</span> <br>
+                    <span onclick="speakText('surround')"><strong class="strong">- surround</strong>:vây quanh</span> <br>
+                    <span onclick="speakText('beneath')"><strong class="strong">- beneath</strong>:bên dưới</span> <br>
+                    <span onclick="speakText('climb')"><strong class="strong">- climb</strong>:leo trèo</span> <br>
+                    <span onclick="speakText('conduct')"><strong class="strong">- conduct</strong>:tổ chức , thực hiện</span> <br>
+                    <span onclick="speakText('ladder')"><strong class="strong">- ladder</strong>:cái thang</span> <br>
+                    <span onclick="speakText('microphone')"><strong class="strong">- microphone</strong>:cái mic</span> <br>
+                    <span onclick="speakText('stand')"><strong class="strong">- stand</strong>:đứng</span> <br>
+                    <span onclick="speakText('desk')"><strong class="strong">- desk</strong>:cái bàn</span> <br>
+                    <span onclick="speakText('broom')"><strong class="strong">- broom</strong>:cái chổi</span> <br>
+                    <span onclick="speakText('carry')"><strong class="strong">- carry</strong>:mang vác</span> <br>
+                    <span onclick="speakText('pour')"><strong class="strong">- pour</strong>:rót đổ</span> <br>
+                    <span onclick="speakText('examine')"><strong class="strong">- examine</strong>:kiểm tra , xem xét</span> <br>
+                    <span onclick="speakText('liquid')"><strong class="strong">- liquid</strong>:chất lỏng</span> <br>
+                    <span onclick="speakText('write')"><strong class="strong">- write</strong>:viết</span> <br>
+                    <span onclick="speakText('lying')"><strong class="strong">- lying</strong>:đang nằm</span> <br>
+                    <span onclick="speakText('grass')"><strong class="strong">- grass</strong>:bãi cỏ</span> <br>
+                    <span onclick="speakText('bench')"><strong class="strong">- bench</strong>:ghế dài</span> <br>
+                    <span onclick="speakText('outdoors')"><strong class="strong">- outdoors</strong>:ngoài trời</span> <br>
+                    <span onclick="speakText('typing')"><strong class="strong">- typing</strong>:đánh máy</span> <br>
+                    <span onclick="speakText('tie')"><strong class="strong">- tie</strong>:cà vạt</span> <br>
+                    <span onclick="speakText('counter')"><strong class="strong">- counter</strong>:quầy kệ bàn</span> <br>
+                    <span onclick="speakText('briefcase')"><strong class="strong">- briefcase</strong>:va li công tác</span> <br>
+                    <span onclick="speakText('sweeping')"><strong class="strong">- sweeping</strong>:đang quét dọn</span> <br>
+                    <span onclick="speakText('diner')"><strong class="strong">- diner</strong>:người ăn tiệm</span> <br>
+                    <span onclick="speakText('drawer')"><strong class="strong">- drawer</strong>:ngăn kéo</span> <br>
+                    <span onclick="speakText('lecture')"><strong class="strong">- lecture</strong>:bài học</span> <br>
+                    <span onclick="speakText('teddy bear')"><strong class="strong">- teddy bear</strong>:gấu bông</span> <br>
+                    <span onclick="speakText('stuck')"><strong class="strong">- stuck</strong>:mắc kẹt</span> <br>
+                    <span onclick="speakText('feature')"><strong class="strong">- feature</strong>:tính năng</span> <br>
+                    <span onclick="speakText('movement')"><strong class="strong">- movement</strong>:sự chuyển động</span> <br>
+                    <span onclick="speakText('countless')"><strong class="strong">- countless</strong>:vô số</span> <br>
+                    <span onclick="speakText('culture')"><strong class="strong">- culture</strong>:văn hóa</span> <br>
+                    <span onclick="speakText('knowledge')"><strong class="strong">- knowledge</strong>:kiến thức</span> <br>
+                    <span onclick="speakText('globe')"><strong class="strong">- globe</strong>:khối cầu</span> <br>
+                    <span onclick="speakText('acquainted')"><strong class="strong">- acquainted</strong>:hiểu biết</span> <br>
+                    <span onclick="speakText('specialize')"><strong class="strong">- specialize</strong>:chuyên môn</span> <br>
+                    <span onclick="speakText('according')"><strong class="strong">- according</strong>: đi theo</span> <br>
+                    <span onclick="speakText('possible')"><strong class="strong">- possible</strong>: khả thi</span> <br>
+                    <span onclick="speakText('little')"><strong class="strong">- little</strong>: nhỏ bé</span> <br>
+                    <span onclick="speakText('parts')"><strong class="strong">- parts</strong>: các bộ phận</span> <br>
+                    <span onclick="speakText('clearly')"><strong class="strong">- clearly</strong>: rõ ràng</span> <br>
+                    <span onclick="speakText('nervous')"><strong class="strong">- nervous</strong>: lo lắng</span> <br>
+                    <span onclick="speakText('without')"><strong class="strong">- without</strong>: không có</span> <br>
+                    <span onclick="speakText('inventor')"><strong class="strong">- inventor</strong>:người phát minh</span> <br>
+                    <span onclick="speakText('statements')"><strong class="strong">- statements</strong>:các câu lệnh</span> <br>
+                    <span onclick="speakText('sitting')"><strong class="strong">- sitting</strong>:ngồi</span> <br>
+                    <span onclick="speakText('reception')"><strong class="strong">- reception</strong>:thu nhận</span> <br>
+                    <span onclick="speakText('instructor')"><strong class="strong">- instructor</strong>:người hướng dẫn</span> <br>
+                    <span onclick="speakText('curtains')"><strong class="strong">- curtains</strong>:rèm cửa</span> <br>
+                    <span onclick="speakText('examining')"><strong class="strong">- examining</strong>:kiểm tra</span> <br>
+                    <span onclick="speakText('similar')"><strong class="strong">- similar</strong>:tương tự</span> <br>
+                    <span onclick="speakText('complaint')"><strong class="strong">- complaint</strong>:lời phàn nàn</span> <br>
+                    <span onclick="speakText('shelves')"><strong class="strong">- shelves</strong>:những cái kệ</span> <br>
+                    <span onclick="speakText('scooter')"><strong class="strong">- scooter.</strong>:xe tay ga</span> <br>
+                    <span onclick="speakText('manual')"><strong class="strong">- manual</strong>:thủ công</span> <br>
+                    <span onclick="speakText('chain')"><strong class="strong">- chain</strong>:xích</span> <br>
+                    <span onclick="speakText('holding')"><strong class="strong">- holding</strong>:giữ</span> <br>
+                    <span onclick="speakText('away')"><strong class="strong">- away</strong>:xa</span> <br>
+                    <span onclick="speakText('courtside')"><strong class="strong">- courtside</strong>:bên lề đường</span> <br>
+                    <span onclick="speakText('lifting')"><strong class="strong">- lifting</strong>:nâng hạ</span> <br>
+                    <span onclick="speakText('furniture')"><strong class="strong">- furniture.</strong>:đồ nội thất</span> <br>
+                    <span onclick="speakText('gathered')"><strong class="strong">- gathered</strong>:tập hợp lại</span> <br>
+                    <span onclick="speakText('bending')"><strong class="strong">- bending</strong>:uốn cong</span> <br>
+                    <span onclick="speakText('hanging')"><strong class="strong">- hanging</strong>:treo</span> <br>
+                    <span onclick="speakText('carpet')"><strong class="strong">- carpet</strong>:thảm</span> <br>
+                    <span onclick="speakText('hanger')"><strong class="strong">- hanger</strong>:móc áo</span> <br>
+                    <span onclick="speakText('against')"><strong class="strong">- against</strong>:chống lại</span> <br>
+                    <span onclick="speakText('a doorway')"><strong class="strong">- a doorway</strong>:1 ô cửa</span> <br>
+                    <span onclick="speakText('wearing glasses')"><strong class="strong">- wearing glasses</strong>:đeo kính</span> <br>
+                    <span onclick="speakText('merchandise')"><strong class="strong">- merchandise</strong>:hàng hóa</span> <br>
+                    <span onclick="speakText('piling up')"><strong class="strong">- piling up</strong>:chất đống</span> <br>
+                    <span onclick="speakText('toolbox')"><strong class="strong">- toolbox</strong>:hộp công cụ</span> <br>
+                    <span onclick="speakText('stacked')"><strong class="strong">- stacked</strong>:xếp chồng lên nhau</span> <br>
+                    <span onclick="speakText('fixtures')"><strong class="strong">- fixtures</strong>:đồ đạc</span> <br>
+                    <span onclick="speakText('mounted')"><strong class="strong">- mounted</strong>:gắn</span> <br>
+                    <span onclick="speakText('on the wall')"><strong class="strong">- on the wall</strong>:trên tường</span> <br>
+                    <span onclick="speakText('tablecloths')"><strong class="strong">- tablecloths</strong>:khăn trải bàn</span> <br>
+                    <span onclick="speakText('scissors')"><strong class="strong">- scissors</strong>:cái kéo</span> <br>
                   
                     <span class="border"></span>
                     <span class="border"></span>
                     <span class="border"></span>
                     <span><strong style="font-size: 20px; color:red;">Cấu trúc văn nói</strong></span> <br>
-                    <span ><strong>+ It time for + sth(N)</strong>:Nói cho 1 cái gì đó</span> <br>
+                    <span ><strong class="strong">+ It time for + sth(N)</strong>:Nói cho 1 cái gì đó</span> <br>
                     <span >- It time for bed : Đến giờ lên giường rồi</span> <br>
-                    <span ><strong>+ It time (for) to (N)</strong>:Để làm cái gì đó</span> <br>
+                    <span ><strong class="strong">+ It time (for) to (N)</strong>:Để làm cái gì đó</span> <br>
                     <span>- It time for us to leave : Đến lúc chúng ta đi rồi</span> <br>
-                    <span ><strong>+ It time + S + past tenses</strong>:Nói gì đó về quá khứ k có thật</span> <br>
+                    <span ><strong class="strong">+ It time + S + past tenses</strong>:Nói gì đó về quá khứ k có thật</span> <br>
                     <span>- It's time we went home :Lẽ ra giờ này là đi về rồi</span> <br>
                     <span class="border"></span>
-                    <span><strong>+ S + be + (not) good / bad  at sth</strong>:Không giỏi cái gì đó</span> <br>
+                    <span><strong class="strong">+ S + be + (not) good / bad  at sth</strong>:Không giỏi cái gì đó</span> <br>
                     <span>- She is good / bad at drawing : Cô ấy giỏi / không giỏi môn vẽ</span> <br>
-                    <span><strong>+ S + be + (not) / trying / (not) to do sth</strong>:Cố gắng / không cố gắng</span> <br>
+                    <span><strong class="strong">+ S + be + (not) / trying / (not) to do sth</strong>:Cố gắng / không cố gắng</span> <br>
                     <span>- I am trying to learn english : Tôi đang cố gắng học tiếng anh</span> <br>
                     <span>- She is trying not to cry : Cô ấy cố gắng không khóc</span> <br>
                     <span class="border"></span>
-                    <span><strong>+ I am waiting for ....</strong>:Tôi đang chờ cái gì đó..</span> <br>
-                    <span><strong>+ I am looking for ....</strong>:Tôi đang tìm cái gì đó..</span> <br>
+                    <span><strong class="strong">+ I am waiting for ....</strong>:Tôi đang chờ cái gì đó..</span> <br>
+                    <span><strong class="strong">+ I am looking for ....</strong>:Tôi đang tìm cái gì đó..</span> <br>
                     <span class="border"></span>
                     <span class="border"></span>
                     <span class="border"></span>
-                    <span onclick="speakText('Here is my address')">- <strong>Here is my address
+                    <span onclick="speakText('Here is my address')">- <strong class="strong">Here is my address
                         </strong>
                         <p>(Đây là địa chỉ của tôi)</p>
                     </span>
-                    <span onclick="speakText('Can you have it delivered?')">- <strong>Can you have it delivered?
+                    <span onclick="speakText('Can you have it delivered?')">- <strong class="strong">Can you have it delivered?
                         </strong>
                         <p>(Bạn có thể giao nó đến cho tôi không?)</p>
                     </span>
-                    <span onclick="speakText('Can I pay by credit card?')">- <strong>Can I pay by credit card?
+                    <span onclick="speakText('Can I pay by credit card?')">- <strong class="strong">Can I pay by credit card?
                         </strong>
                         <p>(Tôi có thể thanh toán bằng thẻ tín dụng được không?)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('Could I have a receipt , please?')">- <strong>Could I have a receipt , please?
+                    <span onclick="speakText('Could I have a receipt , please?')">- <strong class="strong">Could I have a receipt , please?
                         </strong>
                         <p>(Tôi có thể lấy biên lai được không)</p>
                     </span>
-                    <span onclick="speakText('What are you going to do on holiday?')">- <strong>What are you going to do on holiday?
+                    <span onclick="speakText('What are you going to do on holiday?')">- <strong class="strong">What are you going to do on holiday?
                         </strong>
                         <p>(Bạn định làm gì trong kỳ nghỉ?)</p>
                     </span>
-                    <span onclick="speakText('What’s special about this Festival? ')">- <strong>What’s special about this Festival? 
+                    <span onclick="speakText('What’s special about this Festival? ')">- <strong class="strong">What’s special about this Festival? 
                         </strong>
                         <p>(Có gì đặc biệt trong lễ hội này)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('What do you usually have for dinner? ')">- <strong>What do you usually have for dinner?
+                    <span onclick="speakText('What do you usually have for dinner? ')">- <strong class="strong">What do you usually have for dinner?
                         </strong>
                         <p>(Bạn thường ăn gì trong bữa tối)</p>
                     </span>
-                    <span onclick="speakText('Have a good vacation ')">- <strong>Have a good vacation
+                    <span onclick="speakText('Have a good vacation ')">- <strong class="strong">Have a good vacation
                         </strong>
                         <p>(Chúc bạn có một kì nghỉ vui vẻ)</p>
                     </span>
-                    <span onclick="speakText('Do you have any new plans? ')">- <strong>Do you have any new plans?
+                    <span onclick="speakText('Do you have any new plans? ')">- <strong class="strong">Do you have any new plans?
                         </strong>
                         <p>(Bạn có kế hoạch gì mới không)</p>
                     </span>
-                    <span onclick="speakText('How was your holiday? ')">- <strong>How was your holiday?
+                    <span onclick="speakText('How was your holiday? ')">- <strong class="strong">How was your holiday?
                         </strong>
                         <p>(Ngày nghỉ của bạn thế nào)</p>
                     </span>
-                    <span onclick="speakText('I got away for a couple of day. ')">- <strong>I got away for a couple of day.
+                    <span onclick="speakText('I got away for a couple of day. ')">- <strong class="strong">I got away for a couple of day.
                         </strong>
                         <p>(Chúng tôi đi chs xa vài ngày)</p>
                     </span>
-                    <span onclick="speakText('We have 10 days off for our annual holiday. ')">- <strong>We have 10 days off for our annual holiday.
+                    <span onclick="speakText('We have 10 days off for our annual holiday. ')">- <strong class="strong">We have 10 days off for our annual holiday.
                         </strong>
                         <p>(Hằng năm tôi được nghỉ 10 ngày)</p>
                     </span>
-                    <span onclick="speakText('I had a great time.  ')">- <strong>I had a great time. 
+                    <span onclick="speakText('I had a great time.  ')">- <strong class="strong">I had a great time. 
                         </strong>
                         <p>(Tôi đã rất vui)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('Who are you going to invite?')">- <strong>Who are you going to invite?                       </strong>
+                    <span onclick="speakText('Who are you going to invite?')">- <strong class="strong">Who are you going to invite?                       </strong>
                         <p>(Bạn sẽ mời ai)</p>
                     </span>
-                    <span onclick="speakText('Can I bring a friend along?')">- <strong>Can I bring a friend along?                       </strong>
+                    <span onclick="speakText('Can I bring a friend along?')">- <strong class="strong">Can I bring a friend along?                       </strong>
                         <p>(Tôi có thể đưa một người bạn đi cùng không?)</p>
                     </span>
-                    <span onclick="speakText('There will be a lot of food and drink at the party.')">- <strong>There will be a lot of food and drink at the party.                       </strong>
+                    <span onclick="speakText('There will be a lot of food and drink at the party.')">- <strong class="strong">There will be a lot of food and drink at the party.                       </strong>
                         <p>(Sẽ có rất nhiều đồ ăn và đồ uống tại bữa tiệc)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('How shall I be dressed?')">- <strong>How shall I be dressed?</strong>
+                    <span onclick="speakText('How shall I be dressed?')">- <strong class="strong">How shall I be dressed?</strong>
                         <p>(Tôi phải ăn mặc như thế nào?)</p>
                     </span>
-                    <span onclick="speakText('Please bring your own bottle. ')">- <strong>Please bring your own bottle. </strong>
+                    <span onclick="speakText('Please bring your own bottle. ')">- <strong class="strong">Please bring your own bottle. </strong>
                         <p>(Nhớ mang theo rượu đấy nhé)</p>
                     </span>
-                    <span onclick="speakText('Do I know you? ')">- <strong>Do I know you? </strong>
+                    <span onclick="speakText('Do I know you? ')">- <strong class="strong">Do I know you? </strong>
                         <p>(Tôi có biết anh không nhỉ)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('Can I sit here with you ')">- <strong>Can I sit here with you </strong>
+                    <span onclick="speakText('Can I sit here with you ')">- <strong class="strong">Can I sit here with you </strong>
                         <p>(Tôi có thể ngồi đây với bạn được không)</p>
                     </span>
-                    <span onclick="speakText('Do you like this kind of party? ')">- <strong>Do you like this kind of party? </strong>
+                    <span onclick="speakText('Do you like this kind of party? ')">- <strong class="strong">Do you like this kind of party? </strong>
                         <p>(Anh có thích bữa tiệc này chứ)</p>
                     </span>
-                    <span onclick="speakText('We have met.  ')">- <strong>We have met.  </strong>
+                    <span onclick="speakText('We have met.  ')">- <strong class="strong">We have met.  </strong>
                         <p>(Chúng ta vừa gặp nhau rồi đó)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('What would you like to drink ')">- <strong>What would you like to drink</strong>
+                    <span onclick="speakText('What would you like to drink ')">- <strong class="strong">What would you like to drink</strong>
                         <p>(Bạn có muốn uống gì không?)</p>
                     </span>
-                    <span onclick="speakText('Can you get me something to drink?  ')">- <strong>Can you get me something to drink? </strong>
+                    <span onclick="speakText('Can you get me something to drink?  ')">- <strong class="strong">Can you get me something to drink? </strong>
                         <p>(Bạn có thể lấy cho tôi một thứ gì đó để uống được chứ)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('Are you enjoying the party  ')">- <strong>Are you enjoying the party </strong>
+                    <span onclick="speakText('Are you enjoying the party  ')">- <strong class="strong">Are you enjoying the party </strong>
                         <p>(Bạn thích bữa tiệc này chứ?)</p>
                     </span>
-                    <span onclick="speakText('What do you think of motobike  ')">- <strong>What do you think of motobike </strong>
+                    <span onclick="speakText('What do you think of motobike  ')">- <strong class="strong">What do you think of motobike </strong>
                         <p>(Bạn nghĩ gì về chiếc xe)</p>
                     </span>
-                    <span onclick="speakText('I’d like you to meet my friends.  ')">- <strong>I’d like you to meet my friends. </strong>
+                    <span onclick="speakText('I’d like you to meet my friends.  ')">- <strong class="strong">I’d like you to meet my friends. </strong>
                         <p>(Tôi sẽ dẫn bạn tới gặp một số người bạn của tôi)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('Thank you for inviting me. ')">- <strong>Thank you for inviting me.</strong>
+                    <span onclick="speakText('Thank you for inviting me. ')">- <strong class="strong">Thank you for inviting me.</strong>
                         <p>(Cảm ơn vì đã mời tôi)</p>
                     </span>
-                    <span onclick="speakText('I’ll catch you later. ')">- <strong>I’ll catch you later.</strong>
+                    <span onclick="speakText('I’ll catch you later. ')">- <strong class="strong">I’ll catch you later.</strong>
                         <p>(Gặp lại sau nhé)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('It seems like I met you a few times already')">- <strong>It seems like I met you a few times already</strong>
+                    <span onclick="speakText('It seems like I met you a few times already')">- <strong class="strong">It seems like I met you a few times already</strong>
                         <p>(Hình như tôi đã gặp bạn vài lần rồi)</p>
                     </span>
-                    <span onclick="speakText('Still in the same place, right?')">- <strong>Still in the same place, right?</strong>
+                    <span onclick="speakText('Still in the same place, right?')">- <strong class="strong">Still in the same place, right?</strong>
                         <p>(Vẫn chỗ cũ phải không)</p>
                     </span>
-                    <span onclick="speakText('What did you eat today?')">- <strong>What did you eat today?</strong>
+                    <span onclick="speakText('What did you eat today?')">- <strong class="strong">What did you eat today?</strong>
                         <p>(Hôm nay bạn ăn gì vậy)</p>
                     </span>
                     </div>
@@ -635,487 +649,487 @@
             <div class="col">
                 <div class="talk">Câu nói</div>
                 <div>
-                    <span  onclick="speakText('I am happy to make your acquaintance')">- <strong>I am happy to make your acquaintance </strong><p>(Tôi rất vui khi được làm quen với bạn)</p></span>
-                    <span  onclick="speakText('This is Dung . Can i speak to Hiep , please')">- <strong>This is Dung . Can I speak to Hiep , please </strong><p>(Tôi là dũng . Làm ơn cho tôi gặp H)</p></span>
-                    <span  onclick="speakText('long time no see')">- <strong>Long time no see </strong><p>(Lâu rồi không gặp)</p></span>
+                    <span  onclick="speakText('I am happy to make your acquaintance')">- <strong class="strong">I am happy to make your acquaintance </strong><p>(Tôi rất vui khi được làm quen với bạn)</p></span>
+                    <span  onclick="speakText('This is Dung . Can i speak to Hiep , please')">- <strong class="strong">This is Dung . Can I speak to Hiep , please </strong><p>(Tôi là dũng . Làm ơn cho tôi gặp H)</p></span>
+                    <span  onclick="speakText('long time no see')">- <strong class="strong">Long time no see </strong><p>(Lâu rồi không gặp)</p></span>
                     <span class="border"></span>
-                    <span  onclick="speakText('how are you going')">- <strong>How are you going </strong>
+                    <span  onclick="speakText('how are you going')">- <strong class="strong">How are you going </strong>
                         <p>(Dạo này mày sao rồi?)</p>
                     </span>
-                    <span  onclick="speakText('who is you')">- <strong>Who is you </strong>
+                    <span  onclick="speakText('who is you')">- <strong class="strong">Who is you </strong>
                         <p>(Bạn là ai)</p>
                     </span>
-                    <span  onclick="speakText('do you know how to speak vietnamese')">- <strong>Do you know how to speak Vietnamese? </strong>
+                    <span  onclick="speakText('do you know how to speak vietnamese')">- <strong class="strong">Do you know how to speak Vietnamese? </strong>
                         <p>(Bạn có biết nói tiếng việt không)</p>
                     </span>
-                    <span  onclick="speakText('what do you wish')">- <strong>What do you wish? </strong>
+                    <span  onclick="speakText('what do you wish')">- <strong class="strong">What do you wish? </strong>
                         <p>(Bạn mong ước điều gì)</p>
                     </span>
-                    <span  onclick="speakText('can i help you')">- <strong>Can I help you? </strong>
+                    <span  onclick="speakText('can i help you')">- <strong class="strong">Can I help you? </strong>
                         <p>(Tôi có thể giúp gì cho bạn?)</p>
                     </span>
                     <span class="border"></span>
-                    <span  onclick="speakText('what is this called in English')">- <strong>What is this called in English? </strong>
+                    <span  onclick="speakText('what is this called in English')">- <strong class="strong">What is this called in English? </strong>
                         <p>(Cái này trong tiếng anh gọi là gì?)</p>
                     </span>
-                    <span  onclick="speakText('what does this word mean')">- <strong>What does this word mean? </strong>
+                    <span  onclick="speakText('what does this word mean')">- <strong class="strong">What does this word mean? </strong>
                         <p>(Từ này có nghĩa là gì?)</p>
                     </span>
-                    <span  onclick="speakText('please come in')">- <strong>Please come in </strong>
+                    <span  onclick="speakText('please come in')">- <strong class="strong">Please come in </strong>
                         <p>(Xin mời vào)</p>
                     </span>
-                    <span  onclick="speakText('wait for me')">- <strong>Wait for me </strong>
+                    <span  onclick="speakText('wait for me')">- <strong class="strong">Wait for me </strong>
                         <p>(Chờ tôi nhé )</p>
                     </span>
-                    <span  onclick="speakText('wait a minute')">- <strong>Wait a minute </strong>
+                    <span  onclick="speakText('wait a minute')">- <strong class="strong">Wait a minute </strong>
                         <p>(Đợi tý )</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('I don’t understand English well ')">- <strong>I don’t understand English well </strong>
+                    <span onclick="speakText('I don’t understand English well ')">- <strong class="strong">I don’t understand English well </strong>
                         <p>(Tôi không hiểu tiếng anh cho lắm)</p>
                     </span>
-                    <span onclick="speakText('You speak too fast ')">- <strong>You speak too fast </strong>
+                    <span onclick="speakText('You speak too fast ')">- <strong class="strong">You speak too fast </strong>
                         <p>(Bạn nói nhanh quá)</p>
                     </span>
-                    <span onclick="speakText('Please speak more slowly ')">- <strong>Please speak more slowly </strong>
+                    <span onclick="speakText('Please speak more slowly ')">- <strong class="strong">Please speak more slowly </strong>
                         <p>(Làm ơn nói chậm lại được không)</p>
                     </span>
-                    <span onclick="speakText('I want to see you ')">- <strong>I want to see you </strong>
+                    <span onclick="speakText('I want to see you ')">- <strong class="strong">I want to see you </strong>
                         <p>(Tôi muốn được gặp bạn)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('I know ')">- <strong>I know </strong>
+                    <span onclick="speakText('I know ')">- <strong class="strong">I know </strong>
                         <p>(Tôi biết)</p>
                     </span>
-                    <span onclick="speakText('I don’t know ')">- <strong>I don’t know </strong>
+                    <span onclick="speakText('I don’t know ')">- <strong class="strong">I don’t know </strong>
                         <p>(Tôi không biết)</p>
                     </span>
-                    <span onclick="speakText('I am afraid ')">- <strong>I am afraid </strong>
+                    <span onclick="speakText('I am afraid ')">- <strong class="strong">I am afraid </strong>
                         <p>(Tôi sợ)</p>
                     </span>
-                    <span onclick="speakText('I think so ')">- <strong>I think so </strong>
+                    <span onclick="speakText('I think so ')">- <strong class="strong">I think so </strong>
                         <p>(Tôi nghĩ vậy)</p>
                     </span>
-                    <span onclick="speakText('I don’t think so ')">- <strong>I don’t think so </strong>
+                    <span onclick="speakText('I don’t think so ')">- <strong class="strong">I don’t think so </strong>
                         <p>(Tôi không nghĩ vậy)</p>
                     </span>
-                    <span onclick="speakText('It seems to me ')">- <strong>It seems to me </strong>
+                    <span onclick="speakText('It seems to me ')">- <strong class="strong">It seems to me </strong>
                         <p>(Dường như với tôi)</p>
                     </span>
-                    <span onclick="speakText('I have forgotten ')">- <strong>I have forgotten </strong>
+                    <span onclick="speakText('I have forgotten ')">- <strong class="strong">I have forgotten </strong>
                         <p>(Tôi đã quên)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('How do you do? ')">- <strong>How do you do? </strong>
+                    <span onclick="speakText('How do you do? ')">- <strong class="strong">How do you do? </strong>
                         <p>(Bạn khỏe không)</p>
                     </span>
-                    <span onclick="speakText('Where do you live? ')">- <strong>Where do you live? </strong>
+                    <span onclick="speakText('Where do you live? ')">- <strong class="strong">Where do you live? </strong>
                         <p>(Bạn sống ở đâu )</p>
                     </span>
-                    <span onclick="speakText('How long have you been here? ')">- <strong>How long have you been here? </strong>
+                    <span onclick="speakText('How long have you been here? ')">- <strong class="strong">How long have you been here? </strong>
                         <p>(Bạn đã ở đây bao lâu )</p>
                     </span>
-                    <span onclick="speakText('How far ')">- <strong>How far </strong>
+                    <span onclick="speakText('How far ')">- <strong class="strong">How far </strong>
                         <p>(Bao xa )</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('How many people? ')">- <strong>How many people? </strong>
+                    <span onclick="speakText('How many people? ')">- <strong class="strong">How many people? </strong>
                         <p>(Có bao nhiêu người vậy? )</p>
                     </span>
-                    <span onclick="speakText('What do you say? ')">- <strong>What do you say? </strong>
+                    <span onclick="speakText('What do you say? ')">- <strong class="strong">What do you say? </strong>
                         <p>(Bạn nói gì cơ )</p>
                     </span>
-                    <span onclick="speakText('You are very kind!  ')">- <strong>You are very kind!  </strong>
+                    <span onclick="speakText('You are very kind!  ')">- <strong class="strong">You are very kind!  </strong>
                         <p>(Bạn thật là tốt bụng)</p>
                     </span>
-                    <span onclick="speakText('I’m not very well  ')">- <strong>I’m not very well  </strong>
+                    <span onclick="speakText('I’m not very well  ')">- <strong class="strong">I’m not very well  </strong>
                         <p>(Tôi không khỏe lắm)</p>
                     </span>
-                    <span onclick="speakText('She is rather out of sorts  ')">- <strong>She is rather out of sorts  </strong>
+                    <span onclick="speakText('She is rather out of sorts  ')">- <strong class="strong">She is rather out of sorts  </strong>
                         <p>(Cô ấy hơi mệt)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('I have no time   ')">- <strong>I have no time  </strong>
+                    <span onclick="speakText('I have no time   ')">- <strong class="strong">I have no time  </strong>
                         <p>(Tôi không có thời gian)</p>
                     </span>
-                    <span onclick="speakText('I must go   ')">- <strong>I must go  </strong>
+                    <span onclick="speakText('I must go   ')">- <strong class="strong">I must go  </strong>
                         <p>(Tôi phải đi rồi)</p>
                     </span>
-                    <span onclick="speakText('My girlfriend is out   ')">- <strong>My girlfriend is out  </strong>
+                    <span onclick="speakText('My girlfriend is out   ')">- <strong class="strong">My girlfriend is out  </strong>
                         <p>(Bạn gái của tôi không có ở nhà)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('Raise awareness of environmental issues')">- <strong>Raise awareness of environmental issues </strong>
+                    <span onclick="speakText('Raise awareness of environmental issues')">- <strong class="strong">Raise awareness of environmental issues </strong>
                         <p>(Nâng cao nhận thức về những vấn đề môi trường)</p>
                     </span>
-                    <span onclick="speakText('Threaten natural habitats')">- <strong>Threaten natural habitats </strong>
+                    <span onclick="speakText('Threaten natural habitats')">- <strong class="strong">Threaten natural habitats </strong>
                         <p>(Đe dọa môi trường sống)</p>
                     </span>
-                    <span onclick="speakText('I’m afraid I have to be leaving now')">- <strong>I’m afraid I have to be leaving now </strong>
+                    <span onclick="speakText('I’m afraid I have to be leaving now')">- <strong class="strong">I’m afraid I have to be leaving now </strong>
                         <p>(Tôi sợ tôi phải đi bây giờ)</p>
                     </span>
-                    <span onclick="speakText('I’ve got to get going')">- <strong>I’ve got to get going </strong>
+                    <span onclick="speakText('I’ve got to get going')">- <strong class="strong">I’ve got to get going </strong>
                         <p>(Tôi phải đi rồi)</p>
                     </span>
-                    <span onclick="speakText('See you this evening')">- <strong>See you this evening </strong>
+                    <span onclick="speakText('See you this evening')">- <strong class="strong">See you this evening </strong>
                         <p>(Hẹn bạn tối nay  nhé)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('Yes, a very long time')">- <strong>Yes, a very long time </strong>
+                    <span onclick="speakText('Yes, a very long time')">- <strong class="strong">Yes, a very long time </strong>
                         <p>(Đúng vậy, thật là một khoảng thời gian dài)</p>
                     </span>
-                    <span onclick="speakText('Oh, what a lucky chance')">- <strong>Oh, what a lucky chance </strong>
+                    <span onclick="speakText('Oh, what a lucky chance')">- <strong class="strong">Oh, what a lucky chance </strong>
                         <p>(Ồ đây quả là một cơ hội may mắn)</p>
                     </span>
-                    <span onclick="speakText('I never imagined meeting you here')">- <strong>I never imagined meeting you here </strong>
+                    <span onclick="speakText('I never imagined meeting you here')">- <strong class="strong">I never imagined meeting you here </strong>
                         <p>(Tôi không nghĩ sẽ gặp bạn ở đây)</p>
                     </span>
-                    <span onclick="speakText('Don’t you remember me')">- <strong>Don’t you remember me </strong>
+                    <span onclick="speakText('Don’t you remember me')">- <strong class="strong">Don’t you remember me </strong>
                         <p>(Bạn có nhớ tôi không)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('I’ve been wanting to see you')">- <strong>I’ve been wanting to see you </strong>
+                    <span onclick="speakText('I’ve been wanting to see you')">- <strong class="strong">I’ve been wanting to see you </strong>
                         <p>(Tôi đã muốn gặp bạn từ lâu rồi)</p>
                     </span>
-                    <span onclick="speakText('Do you know Mr. Hiep')">- <strong>Do you know Mr. Hiep </strong>
+                    <span onclick="speakText('Do you know Mr. Hiep')">- <strong class="strong">Do you know Mr. Hiep </strong>
                         <p>(Bạn có biết Hiep không)</p>
                     </span>
-                    <span onclick="speakText('Mr. Hiep is my girlfriend. ')">- <strong>Mr. Hiep is my friend.  </strong>
+                    <span onclick="speakText('Mr. Hiep is my girlfriend. ')">- <strong class="strong">Mr. Hiep is my friend.  </strong>
                         <p>(Hiệp là bạn gái của tôi)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('It’s foggy ')">- <strong>It’s foggy </strong>
+                    <span onclick="speakText('It’s foggy ')">- <strong class="strong">It’s foggy </strong>
                         <p>(Trời có sương mù)</p>
                     </span>
-                    <span onclick="speakText('It’s windy ')">- <strong>It’s windy </strong>
+                    <span onclick="speakText('It’s windy ')">- <strong class="strong">It’s windy </strong>
                         <p>(Trời có nhiều gió)</p>
                     </span>
-                    <span onclick="speakText('It’s snowing ')">- <strong>It’s snowing </strong>
+                    <span onclick="speakText('It’s snowing ')">- <strong class="strong">It’s snowing </strong>
                         <p>(Trời đang có tuyết)</p>
                     </span>
-                    <span onclick="speakText('It’s stormy ')">- <strong>It’s stormy </strong>
+                    <span onclick="speakText('It’s stormy ')">- <strong class="strong">It’s stormy </strong>
                         <p>(Trời đang có bão)</p>
                     </span>
-                    <span onclick="speakText('It’s forecast to sunny. ')">- <strong>It’s forecast to sunny. </strong>
+                    <span onclick="speakText('It’s forecast to sunny. ')">- <strong class="strong">It’s forecast to sunny. </strong>
                         <p>(Trời dự báo sẽ nắng)</p>
                     </span>
-                    <span onclick="speakText('What’s the weather like today?')">- <strong>What’s the weather like today?</strong>
+                    <span onclick="speakText('What’s the weather like today?')">- <strong class="strong">What’s the weather like today?</strong>
                         <p>(Thời tiết hôm nay thế nào?)</p>
                     </span>
-                    <span onclick="speakText('Do you think it is going to rain?')">- <strong>What’s the weather like in HCM city?</strong>
+                    <span onclick="speakText('Do you think it is going to rain?')">- <strong class="strong">What’s the weather like in HCM city?</strong>
                         <p>(Thời tiết ở thành phố Hồ Chí Minh thế nào?)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('Do you think it is going to rain?')">- <strong>Do you think it is going to rain?
+                    <span onclick="speakText('Do you think it is going to rain?')">- <strong class="strong">Do you think it is going to rain?
                         </strong>
                         <p>(Bạn có nghĩ trời sắp mưa không?)</p>
                     </span>
-                    <span onclick="speakText('It’s still raining?')">- <strong>It’s still raining?
+                    <span onclick="speakText('It’s still raining?')">- <strong class="strong">It’s still raining?
                         </strong>
                         <p>(Trời vẫn đang mưa hả)</p>
                     </span>
-                    <span onclick="speakText('What’s the forecast today')">- <strong>What’s the forecast today
+                    <span onclick="speakText('What’s the forecast today')">- <strong class="strong">What’s the forecast today
                         </strong>
                         <p>(Dự báo thời tiết hôm nay thế nào)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('The weather is fine')">- <strong>The weather is fine
+                    <span onclick="speakText('The weather is fine')">- <strong class="strong">The weather is fine
                         </strong>
                         <p>(Trời đẹp)</p>
                     </span>
-                    <span onclick="speakText('What a beautiful day')">- <strong>What a beautiful day
+                    <span onclick="speakText('What a beautiful day')">- <strong class="strong">What a beautiful day
                         </strong>
                         <p>(Hôm nay trời đẹp thật)</p>
                     </span>
-                    <span onclick="speakText('There’s not a cloud in the sky')">- <strong>There’s not a cloud in the sky
+                    <span onclick="speakText('There’s not a cloud in the sky')">- <strong class="strong">There’s not a cloud in the sky
                         </strong>
                         <p>(Trời không 1 bóng mây)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('What’s the date today? ')">- <strong>What’s the date today? </strong>
+                    <span onclick="speakText('What’s the date today? ')">- <strong class="strong">What’s the date today? </strong>
                         <p>(Hôm nay là ngày bao nhiêu)</p>
                     </span>
-                    <span onclick="speakText('Could you tell me the time, please? ')">- <strong>Could you tell me the time, please? </strong>
+                    <span onclick="speakText('Could you tell me the time, please? ')">- <strong class="strong">Could you tell me the time, please? </strong>
                         <p>(Bạn có thể xem giúp tôi hiện tại là mấy giờ được chứ)</p>
                     </span>
-                    <span onclick="speakText('Do you happen to have the time? ')">- <strong>Do you happen to have the time? </strong>
+                    <span onclick="speakText('Do you happen to have the time? ')">- <strong class="strong">Do you happen to have the time? </strong>
                         <p>(Bạn có biết mấy giờ rồi không?)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('My watch loses time ')">- <strong>My watch loses time </strong>
+                    <span onclick="speakText('My watch loses time ')">- <strong class="strong">My watch loses time </strong>
                         <p>(Đồng hồ tôi chạy trễ)</p>
                     </span>
-                    <span onclick="speakText('I’m sorry, I don’t have a watch here ')">- <strong>I’m sorry, I don’t have a watch here </strong>
+                    <span onclick="speakText('I’m sorry, I don’t have a watch here ')">- <strong class="strong">I’m sorry, I don’t have a watch here </strong>
                         <p>(Tôi xin lỗi , tôi không có đồng hồ ở đây)</p>
                     </span>
-                    <span onclick="speakText('Unfortunately, I left my watch at home ')">- <strong>Unfortunately, I left my watch at home </strong>
+                    <span onclick="speakText('Unfortunately, I left my watch at home ')">- <strong class="strong">Unfortunately, I left my watch at home </strong>
                         <p>(Thật không may, tôi để quên mất đồng hồ của mình ở nhà rồi)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('What is the name of this street? ')">- <strong>What is the name of this street?
+                    <span onclick="speakText('What is the name of this street? ')">- <strong class="strong">What is the name of this street?
                         </strong>
                         <p>(Đường này tên là gì)</p>
                     </span>
-                    <span onclick="speakText('I’m lost. Could you tell me where I am? ')">- <strong>I’m lost. Could you tell me where I am?
+                    <span onclick="speakText('I’m lost. Could you tell me where I am? ')">- <strong class="strong">I’m lost. Could you tell me where I am?
                         </strong>
                         <p>(Tôi bị lạc. Có thể nói cho tôi, tôi đang ở đâu được không)</p>
                     </span>
-                    <span onclick="speakText('Where’s the restroom? ')">- <strong>Where’s the restroom?
+                    <span onclick="speakText('Where’s the restroom? ')">- <strong class="strong">Where’s the restroom?
                         </strong>
                         <p>(Nhà vệ sinh ở đâu)</p>
                     </span>
-                    <span onclick="speakText('Where is the nearest bank?     ')">- <strong>Where is the nearest bank?   
+                    <span onclick="speakText('Where is the nearest bank?     ')">- <strong class="strong">Where is the nearest bank?   
                         </strong>
                         <p>(Ngân hàng gần nhất ở đâu)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('Where do I turn ')">- <strong>Where do I turn
+                    <span onclick="speakText('Where do I turn ')">- <strong class="strong">Where do I turn
                         </strong>
                         <p>(Tôi rẽ ở đâu)</p>
                     </span>
-                    <span onclick="speakText('Excuse me, could you tell me how to get to HCM? ')">- <strong>Excuse me, could you tell me how to get to HCM?
+                    <span onclick="speakText('Excuse me, could you tell me how to get to HCM? ')">- <strong class="strong">Excuse me, could you tell me how to get to HCM?
                         </strong>
                         <p>(Xin lỗi, bạn có thể chỉ cho tôi đường đến HCM không)</p>
                     </span>
-                    <span onclick="speakText('Excuse me, do you know where the HCM is? ')">- <strong>Excuse me, do you know where the HCM is?
+                    <span onclick="speakText('Excuse me, do you know where the HCM is? ')">- <strong class="strong">Excuse me, do you know where the HCM is?
                         </strong>
                         <p>(Xin lỗi, bạn có biết HCM ở đâu không?)</p>
                     </span>
-                    <span onclick="speakText('At the end of the street. ')">- <strong>At the end of the street.
+                    <span onclick="speakText('At the end of the street. ')">- <strong class="strong">At the end of the street.
                         </strong>
                         <p>(Ở cuối con đường)</p>
                     </span>
-                    <span onclick="speakText('Turn right at the traffic light ')">- <strong>Turn right at the traffic light
+                    <span onclick="speakText('Turn right at the traffic light ')">- <strong class="strong">Turn right at the traffic light
                         </strong>
                         <p>(Rẽ phải ở cột đèn giao thông)</p>
                     </span>
-                    <span onclick="speakText('Keep going forward ')">- <strong>Keep going forward
+                    <span onclick="speakText('Keep going forward ')">- <strong class="strong">Keep going forward
                         </strong>
                         <p>(Tiếp tục về phía trước)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('Please take me to this address ')">- <strong>Please take me to this address
+                    <span onclick="speakText('Please take me to this address ')">- <strong class="strong">Please take me to this address
                         </strong>
                         <p>(làm ơn cho tôi đến địa chỉ này)</p>
                     </span>
-                    <span onclick="speakText('Can you take me to the airport, please. ')">- <strong>Can you take me to the airport, please.
+                    <span onclick="speakText('Can you take me to the airport, please. ')">- <strong class="strong">Can you take me to the airport, please.
                         </strong>
                         <p>(Hãy đưa tôi đến sân bay)</p>
                     </span>
-                    <span onclick="speakText('I need to go to the international airport, please ')">- <strong>I need to go to the international airport, please
+                    <span onclick="speakText('I need to go to the international airport, please ')">- <strong class="strong">I need to go to the international airport, please
                         </strong>
                         <p>(Vui lòng đưa tôi đến sân bay quốc tế)</p>
                     </span>
-                    <span onclick="speakText('How long will I have to wait?  ')">- <strong>How long will I have to wait? 
+                    <span onclick="speakText('How long will I have to wait?  ')">- <strong class="strong">How long will I have to wait? 
                         </strong>
                         <p>(Tôi sẽ phải chờ bao lâu)</p>
                     </span>
-                    <span onclick="speakText('How far is it?')">- <strong>How far is it?                        </strong>
+                    <span onclick="speakText('How far is it?')">- <strong class="strong">How far is it?                        </strong>
                         <p>(Nó cách bao xa)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('What summer sports are popular in your country?')">- <strong>What summer sports are popular in your country? </strong>
+                    <span onclick="speakText('What summer sports are popular in your country?')">- <strong class="strong">What summer sports are popular in your country? </strong>
                         <p>(Các môn thể thao mùa hè nào được ưa chuộng ở nước bạn?)</p>
                     </span>
-                    <span onclick="speakText('Who are the members of the national soccer team? ')">- <strong>Who are the members of the national soccer team?  </strong>
+                    <span onclick="speakText('Who are the members of the national soccer team? ')">- <strong class="strong">Who are the members of the national soccer team?  </strong>
                         <p>(Thành viên của đội bóng đá nước bạn là những ai?)</p>
                     </span>
-                    <span onclick="speakText('How many stadium does your city have? ')">- <strong>How many stadium does your city have?  </strong>
+                    <span onclick="speakText('How many stadium does your city have? ')">- <strong class="strong">How many stadium does your city have?  </strong>
                         <p>(Thành phố của bạn có bao nhiêu sân vận động?)</p>
                     </span>
-                    <span onclick="speakText('What is the main stadium called? ')">- <strong>What is the main stadium called?  </strong>
+                    <span onclick="speakText('What is the main stadium called? ')">- <strong class="strong">What is the main stadium called?  </strong>
                         <p>(Sân vận động chính tên là gì?)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('Please keep your bags at the lockers before entering the shop. ')">- <strong>Please keep your bags at the lockers before entering the shop. </strong>
+                    <span onclick="speakText('Please keep your bags at the lockers before entering the shop. ')">- <strong class="strong">Please keep your bags at the lockers before entering the shop. </strong>
                         <p>(Làm ơn cất túi của bạn vào tủ đồ trước khi vào cửa hàng)</p>
                     </span>
-                    <span onclick="speakText('What can I do for you, sir?  ')">- <strong>What can I do for you, sir?  </strong>
+                    <span onclick="speakText('What can I do for you, sir?  ')">- <strong class="strong">What can I do for you, sir?  </strong>
                         <p>(Bạn cần mua gì ạ)</p>
                     </span>
-                    <span onclick="speakText('What color are you looking for?')">- <strong>What color are you looking for?</strong>
+                    <span onclick="speakText('What color are you looking for?')">- <strong class="strong">What color are you looking for?</strong>
                         <p>(Anh chị cần tìm màu nao ạ)</p>
                     </span>
-                    <span onclick="speakText('Do you like this one?')">- <strong>Do you like this one?</strong>
+                    <span onclick="speakText('Do you like this one?')">- <strong class="strong">Do you like this one?</strong>
                         <p>(Bạn có thích cái này không)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('How do you want this one?')">- <strong>How do you want this one?</strong>
+                    <span onclick="speakText('How do you want this one?')">- <strong class="strong">How do you want this one?</strong>
                         <p>(Bạn xem cái này thế nào)</p>
                     </span>
-                    <span onclick="speakText('What size do you want?')">- <strong>What size do you want?</strong>
+                    <span onclick="speakText('What size do you want?')">- <strong class="strong">What size do you want?</strong>
                         <p>(Bạn muốn tìm cỡ nào)</p>
                     </span>
-                    <span onclick="speakText('These items are on sale today')">- <strong>These items are on sale today</strong>
+                    <span onclick="speakText('These items are on sale today')">- <strong class="strong">These items are on sale today</strong>
                         <p>(Những mặt hàng này đang được giảm giá)</p>
                     </span>
-                    <span onclick="speakText('')">- <strong>Let me show you some of what we have.</strong>
+                    <span onclick="speakText('')">- <strong class="strong">Let me show you some of what we have.</strong>
                         <p>(Để tôi giới thiệu vài mẫu cho bạn)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('I want to buy car')">- <strong> I want to buy car</strong>
+                    <span onclick="speakText('I want to buy car')">- <strong class="strong"> I want to buy car</strong>
                         <p>(Tôi muốn mua xe hơi)</p>
                     </span>
-                    <span onclick="speakText('What is the length')">- <strong> What is the length</strong>
+                    <span onclick="speakText('What is the length')">- <strong class="strong"> What is the length</strong>
                         <p>(Chiều dài bao nhiêu)</p>
                     </span>
-                    <span onclick="speakText('Have you got it in a smaller/larger size?')">- <strong> Have you got it in a smaller/larger size?</strong>
+                    <span onclick="speakText('Have you got it in a smaller/larger size?')">- <strong class="strong"> Have you got it in a smaller/larger size?</strong>
                         <p>(Bạn có size nhỏ/to hơn không?)</p>
                     </span>
-                    <span onclick="speakText('I don’t like this')">- <strong> I don’t like this</strong>
+                    <span onclick="speakText('I don’t like this')">- <strong class="strong"> I don’t like this</strong>
                         <p>(Tôi không thích cái này)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('Would you have this in another colour')">- <strong> Would you have this in another colour</strong>
+                    <span onclick="speakText('Would you have this in another colour')">- <strong class="strong"> Would you have this in another colour</strong>
                         <p>(Sản phẩm này còn màu khác không)</p>
                     </span>
-                    <span onclick="speakText('It’s very expensive')">- <strong> It’s very expensive</strong>
+                    <span onclick="speakText('It’s very expensive')">- <strong class="strong"> It’s very expensive</strong>
                         <p>(Cái này mắc quá)</p>
                     </span>
-                    <span onclick="speakText('Could you lower the price?')">- <strong> Could you lower the price?</strong>
+                    <span onclick="speakText('Could you lower the price?')">- <strong class="strong"> Could you lower the price?</strong>
                         <p>(Bạn có thể giảm giá không)</p>
                     </span>
-                    <span onclick="speakText('I can’t take it with me.')">- <strong> I can’t take it with me.</strong>
+                    <span onclick="speakText('I can’t take it with me.')">- <strong class="strong"> I can’t take it with me.</strong>
                         <p>(Tôi không thể mang nó theo)</p>
                     </span>
-                    <span onclick="speakText('I’ll pay in cash')">- <strong> I’ll pay in cash</strong>
+                    <span onclick="speakText('I’ll pay in cash')">- <strong class="strong"> I’ll pay in cash</strong>
                         <p>(Tôi sẽ thanh toán bằng tiền mặt)</p>
                     </span>
-                    <span onclick="speakText('What time does the shop open')">- <strong> What time does the shop open</strong>
+                    <span onclick="speakText('What time does the shop open')">- <strong class="strong"> What time does the shop open</strong>
                         <p>(Mấy giờ cửa hàng mở cửa vậy?)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('Do you have any available tables?')">- <strong> Do you have any available tables?</strong>
+                    <span onclick="speakText('Do you have any available tables?')">- <strong class="strong"> Do you have any available tables?</strong>
                         <p>(Bạn còn bàn trống không)</p>
                     </span>
-                    <span onclick="speakText('Do you have anything special?')">- <strong> Do you have anything special?</strong>
+                    <span onclick="speakText('Do you have anything special?')">- <strong class="strong"> Do you have anything special?</strong>
                         <p>(Nhà hàng có món gì đặc biệt không)</p>
                     </span>
-                    <span onclick="speakText('Do you have a vegan menu?')">- <strong> Do you have a vegan menu?</strong>
+                    <span onclick="speakText('Do you have a vegan menu?')">- <strong class="strong"> Do you have a vegan menu?</strong>
                         <p>(Ở đây có thực đơn chay không)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('How may I help you?')">- <strong> How may I help you?</strong>
+                    <span onclick="speakText('How may I help you?')">- <strong class="strong"> How may I help you?</strong>
                         <p>(Tôi có thể giúp gì ạ)</p>
                     </span>
-                    <span onclick="speakText('Is this table reserved?')">- <strong> Is this table reserved?</strong>
+                    <span onclick="speakText('Is this table reserved?')">- <strong class="strong"> Is this table reserved?</strong>
                         <p>(Bàn này đã đặt trước phải không)</p>
                     </span>
-                    <span onclick="speakText('Do you have a reservation?/Have you booked a table? ')">- <strong> Do you have a reservation?/Have you booked a table? </strong>
+                    <span onclick="speakText('Do you have a reservation?/Have you booked a table? ')">- <strong class="strong"> Do you have a reservation?/Have you booked a table? </strong>
                         <p>(Quý khách đã đặt bàn trước chưa ạ)</p>
                     </span>
-                    <span onclick="speakText('May I have your name?')">- <strong> May I have your name?</strong>
+                    <span onclick="speakText('May I have your name?')">- <strong class="strong"> May I have your name?</strong>
                         <p>(Cho tôi xin tên của quý khách)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('What are you doing here?')">- <strong> What are you doing here?</strong>
+                    <span onclick="speakText('What are you doing here?')">- <strong class="strong"> What are you doing here?</strong>
                         <p>(Bạn đang làm gì ở đây vậy)</p>
                     </span>
-                    <span onclick="speakText('Would you like to have lunch with me?')">- <strong> Would you like to have lunch with me?</strong>
+                    <span onclick="speakText('Would you like to have lunch with me?')">- <strong class="strong"> Would you like to have lunch with me?</strong>
                         <p>(Bạn có muốn ăn trưa với tôi không)</p>
                     </span>
-                    <span onclick="speakText('How long have you been here')">- <strong> How long have you been here</strong>
+                    <span onclick="speakText('How long have you been here')">- <strong class="strong"> How long have you been here</strong>
                         <p>(Bạn sống ở đây lâu chưa )</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('Is there any room available')">- <strong> Is there any room available</strong>
+                    <span onclick="speakText('Is there any room available')">- <strong class="strong"> Is there any room available</strong>
                         <p>(Ở đây có phòng trống không )</p>
                     </span>
-                    <span onclick="speakText('I want a room, please')">- <strong> I want a room, please</strong>
+                    <span onclick="speakText('I want a room, please')">- <strong class="strong"> I want a room, please</strong>
                         <p>(Tôi muốn thuê 1 phòng )</p>
                     </span>
-                    <span onclick="speakText('Have you any room vacant')">- <strong> Have you any room vacant</strong>
+                    <span onclick="speakText('Have you any room vacant')">- <strong class="strong"> Have you any room vacant</strong>
                         <p>(Tôi muốn đặt phòng )</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('I want a room with a street view.')">- <strong> I want a room with a street view.</strong>
+                    <span onclick="speakText('I want a room with a street view.')">- <strong class="strong"> I want a room with a street view.</strong>
                         <p>(Tôi muốn thuê phòng nhìn ra phố)</p>
                     </span>
-                    <span onclick="speakText('We’d like a double room')">- <strong> We’d like a double room</strong>
+                    <span onclick="speakText('We’d like a double room')">- <strong class="strong"> We’d like a double room</strong>
                         <p>(Chúng tôi muốn thuê 1 phòng đôi)</p>
                     </span>
-                    <span onclick="speakText('Can you book us a single room for April 30th')">- <strong> Can you book us a single room for April 30th</strong>
+                    <span onclick="speakText('Can you book us a single room for April 30th')">- <strong class="strong"> Can you book us a single room for April 30th</strong>
                         <p>(Tôi có thể đặt 1 phòng đơn vào ngày 30 tháng 4 được không?)</p>
                     </span>
-                    <span onclick="speakText('I want to rent a whole house')">- <strong> I want to rent a whole house</strong>
+                    <span onclick="speakText('I want to rent a whole house')">- <strong class="strong"> I want to rent a whole house</strong>
                         <p>(Tôi muốn thuê 1 căn nhà nguyên căn)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('May I see room')">- <strong> May I see room</strong>
+                    <span onclick="speakText('May I see room')">- <strong class="strong"> May I see room</strong>
                         <p>(Tôi có thể xem phòng không)</p>
                     </span>
-                    <span onclick="speakText('I don’t like this, have you got a better room')">- <strong> I don’t like this, have you got a better room</strong>
+                    <span onclick="speakText('I don’t like this, have you got a better room')">- <strong class="strong"> I don’t like this, have you got a better room</strong>
                         <p>(Tôi không thích ở phòng này, anh có phòng nào khá hơn không)</p>
                     </span>
-                    <span onclick="speakText('Have you a larger room')">- <strong> Have you a larger room</strong>
+                    <span onclick="speakText('Have you a larger room')">- <strong class="strong"> Have you a larger room</strong>
                         <p>(Có phòng rộng hơn không)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('Who’s calling, please')">- <strong> Who’s calling, please</strong>
+                    <span onclick="speakText('Who’s calling, please')">- <strong class="strong"> Who’s calling, please</strong>
                         <p>(Cho hỏi ai đang gọi đấy ạ)</p>
                     </span>
-                    <span onclick="speakText('Sorry, wrong number')">- <strong> Sorry, wrong number</strong>
+                    <span onclick="speakText('Sorry, wrong number')">- <strong class="strong"> Sorry, wrong number</strong>
                         <p>(Xin lỗi tôi gọi nhầm số)</p>
                     </span>
-                    <span onclick="speakText('Do you mind holding while I check on that?')">- <strong> Do you mind holding while I check on that?</strong>
+                    <span onclick="speakText('Do you mind holding while I check on that?')">- <strong class="strong"> Do you mind holding while I check on that?</strong>
                         <p>(Bạn giữ máy để tôi kiểm tra nhé)</p>
                     </span>
                     <span class="border"></span>
-                    <span onclick="speakText('Would you mind turning on the light? ')">- <strong> Would you mind turning on the light? </strong>
+                    <span onclick="speakText('Would you mind turning on the light? ')">- <strong class="strong"> Would you mind turning on the light? </strong>
                         <p>(Bạn có thể giúp tôi bật đèn được không)</p>
                     </span>
-                    <span onclick="speakText('It would be my pleasure ')">- <strong> It would be my pleasure </strong>
+                    <span onclick="speakText('It would be my pleasure ')">- <strong class="strong"> It would be my pleasure </strong>
                         <p>(Tôi rất sẵn lòng)</p>
                     </span>
-                    <span onclick="speakText('Sorry, I’m kind of busy now.  ')">- <strong> Sorry, I’m kind of busy now.  </strong>
+                    <span onclick="speakText('Sorry, I’m kind of busy now.  ')">- <strong class="strong"> Sorry, I’m kind of busy now.  </strong>
                         <p>(Xin lỗi bây giờ tôi rất bận)</p>
                     </span>
                     <span class="border"></span>
                     <span class="border"></span>
                     <span class="border"></span>
-                    <span onclick="speakText('What time did you get up this morning?')">- <strong class="main_color">What time did you get up this morning?</strong>
+                    <span onclick="speakText('What time did you get up this morning?')">- <strong class="main_color  strong">What time did you get up this morning?</strong>
                         <p>(Sáng nay bạn dậy lúc mấy giờ)</p>
                     </span>
-                    <span onclick="speakText('Would you like to have breakfast with me?')">- <strong class="main_color">Would you like to have breakfast with me?</strong>
+                    <span onclick="speakText('Would you like to have breakfast with me?')">- <strong class="main_color  strong">Would you like to have breakfast with me?</strong>
                         <p>(Bạn đi ăn sáng cùng tôi không)</p>
                     </span>
-                    <span onclick="speakText('where is your house')">- <strong class="main_color">Where is your house</strong>
+                    <span onclick="speakText('where is your house')">- <strong class="main_color  strong">Where is your house</strong>
                         <p>(Nhà bạn ở đâu)</p>
                     </span>
-                    <span onclick="speakText('where are you')">- <strong class="main_color">Where are you</strong>
+                    <span onclick="speakText('where are you')">- <strong class="main_color  strong">Where are you</strong>
                         <p>(Bạn đang ở đâu vậy)</p>
                     </span>
-                    <span onclick="speakText('I did not go home this afternoon')">- <strong class="main_color">I didn t go home this afternoon </strong>
+                    <span onclick="speakText('I did not go home this afternoon')">- <strong class="main_color  strong">I didn t go home this afternoon </strong>
                         <p>(Trưa nay tôi không về nhà)</p>
                     </span>
-                    <span onclick="speakText('How much is this')">- <strong class="main_color">How much is this </strong>
+                    <span onclick="speakText('How much is this')">- <strong class="main_color  strong">How much is this </strong>
                         <p>(Cái này giá bao nhiêu)</p>
                     </span>
-                    <span onclick="speakText('Are you free this afternoon?')">- <strong class="main_color">Are you free this afternoon? </strong>
+                    <span onclick="speakText('Are you free this afternoon?')">- <strong class="main_color  strong">Are you free this afternoon? </strong>
                         <p>(Trưa nay bạn rảnh không)</p>
                     </span>
-                    <span onclick="speakText('Shall we go out tonight?')">- <strong class="main_color">Shall we go out tonight? </strong>
+                    <span onclick="speakText('Shall we go out tonight?')">- <strong class="main_color  strong">Shall we go out tonight? </strong>
                         <p>(Tối nay chúng ta đi chơi không)</p>
                     </span>
-                    <span onclick="speakText('Go left')">- <strong class="main_color">Go left </strong>
+                    <span onclick="speakText('Go left')">- <strong class="main_color  strong">Go left </strong>
                         <p>(Đi sang trái)</p>
                     </span>
-                    <span onclick="speakText('Are not you afraid to go alone at night?')">- <strong class="main_color">Are not you afraid to go alone at night? </strong>
+                    <span onclick="speakText('Are not you afraid to go alone at night?')">- <strong class="main_color  strong">Are not you afraid to go alone at night? </strong>
                         <p>(Đi đêm một mình bạn không sợ sao)</p>
                     </span>
-                    <span onclick="speakText('do you want to come with me?')">- <strong class="main_color">Do you want to come with me? </strong>
+                    <span onclick="speakText('do you want to come with me?')">- <strong class="main_color  strong">Do you want to come with me? </strong>
                         <p>(Bạn có muốn đi cùng tôi không)</p>
                     </span>
-                    <span onclick="speakText('I just finished brushing my teeth?')">- <strong class="main_color">I just finished brushing my teeth? </strong>
+                    <span onclick="speakText('I just finished brushing my teeth?')">- <strong class="main_color  strong">I just finished brushing my teeth? </strong>
                         <p>(Tôi vừa đánh răng xong)</p>
                     </span>
-                    <span onclick="speakText('I am going out')">- <strong class="main_color">I'm going out </strong>
+                    <span onclick="speakText('I am going out')">- <strong class="main_color  strong">I'm going out </strong>
                         <p>(Tôi đang đi ra ngoài)</p>
                     </span>
-                    <span onclick="speakText('I am walking down the stairs')">- <strong class="main_color">I'm walking down the stairs </strong>
+                    <span onclick="speakText('I am walking down the stairs')">- <strong class="main_color  strong">I'm walking down the stairs </strong>
                         <p>(Tôi đang bước xuống cầu thang)</p>
                     </span>
-                    <span onclick="speakText('This place is jammed with traffic')">- <strong class="main_color">This place is jammed with traffic </strong>
+                    <span onclick="speakText('This place is jammed with traffic')">- <strong class="main_color  strong">This place is jammed with traffic </strong>
                         <p>(Chỗ này đang bị kẹt xe)</p>
                     </span>
                 </div>

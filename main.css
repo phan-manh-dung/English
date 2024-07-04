@@ -2,6 +2,10 @@
    
 }
 
+.wrapper_add{
+    align-items: center;
+}
+
 .title{
     font-size: 1.6rem;
     font-weight: 600;
@@ -9,15 +13,6 @@
     text-align: center;
 }
 
-.vocabulady{
-    color: red;
-    text-align: center;
-}
-
-.talk{
-    color: red;
-    text-align: center;
-}
 
 .border {
     display: block;
